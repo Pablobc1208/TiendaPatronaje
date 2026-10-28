@@ -1,86 +1,87 @@
 ---
 name: review
-description: Independent, read-only review of a user story against its acceptance criteria (or of an epic spec before planning), with a deterministic verdict.
+description: Revisión independiente y de solo lectura de una historia de usuario contra sus criterios de aceptación (o de la spec de una épica antes de planificar), con un veredicto determinista.
 mode: auto
 ---
 
-# Review
+# Revisión
 
-An independent judge. The producer (the main session) wrote the spec and the code; the reviewer checks them with a **fresh context**, reading files from disk. It never produces and never fixes.
+Un juez independiente. El productor (la sesión principal) escribió la spec y el código; el revisor los comprueba con **contexto limpio**, leyendo los ficheros del disco. Nunca produce y nunca corrige.
 
-## How It Runs
+## Cómo se ejecuta
 
-- Preferred: the `sdd-reviewer` subagent (installed per platform), invoked by the main session.
-- No subagents available: run it in a new chat with only this file and the pointers below. Never review your own work in the same context that produced it and call it independent.
-- The caller passes **file pointers, not summaries**: the epic file, `TASKS.md`, `PLAN.md`, `docs/ARCHITECTURE.md`, and the list of files changed for the US (for example from `git status` / `git diff --name-only`). Paraphrased context is where scope drift hides.
+- Preferido: el subagente `sdd-reviewer` (instalado por plataforma), invocado por la sesión principal.
+- Sin subagentes disponibles: ejecútala en un chat nuevo con solo este fichero y las rutas de abajo. Nunca revises tu propio trabajo en el mismo contexto que lo produjo llamándolo independiente.
+- Quien la invoca pasa **rutas de ficheros, no resúmenes**: el fichero de la épica, `TASKS.md`, `PLAN.md`, `docs/ARCHITECTURE.md` y la lista de ficheros cambiados para la US (por ejemplo de `git status` / `git diff --name-only`). En el contexto parafraseado es donde se esconde la deriva de alcance.
 
-## Hard Rules
+## Reglas estrictas
 
-- Read-only on code and specs. The only file you write is `specs/EPICX/REVIEW.md` (append a section; never rewrite previous ones).
-- Do not invoke other agents. Do not run commands that modify files (formatters with write mode, migrations, installs).
-- **Silence is not approval.** A check you could not run is reported `N/A` with its reason, never `PASS`. If something essential could not be verified, the verdict is `NOT_VERIFIED`.
-- **Scope fence.** Be strict only with files new or modified for this US. Problems in untouched code go to `Observations` and never affect the verdict.
+- Solo lectura sobre código y specs. El único fichero que escribes es `specs/EPICX/REVIEW.md` (añade una sección; nunca reescribas las anteriores).
+- No invoques otros agentes. No ejecutes comandos que modifiquen ficheros (formateadores en modo escritura, migraciones, instalaciones).
+- **El silencio no es aprobación.** Una comprobación que no pudiste ejecutar se informa como `N/A` con su motivo, nunca `PASS`. Si algo esencial no se pudo verificar, el veredicto es `NOT_VERIFIED`.
+- **Límite de alcance.** Sé estricto solo con los ficheros nuevos o modificados para esta US. Los problemas del código no tocado van a `Observaciones` y nunca afectan al veredicto.
 
-## Mode `us` (default): `/sdd-review EPICX/USn`
+## Modo `us` (por defecto): `/sdd-review EPICX/USn`
 
-1. **Tests.** Run the test command from `docs/ARCHITECTURE.md`. Failing tests → CRITICAL. No test command or it cannot run → `NOT_VERIFIED` (say what is missing).
-2. **Tasks.** Every task of the US is implemented in the code, not just ticked.
-3. **Acceptance criteria traceability.** One row per AC of the US: where it is implemented and which test proves it.
+1. **Tests.** Ejecuta el comando de tests de `docs/ARCHITECTURE.md`. Tests que fallan → CRITICAL. Sin comando de tests o no se puede ejecutar → `NOT_VERIFIED` (di qué falta).
+2. **Tareas.** Cada tarea de la US está implementada en el código, no solo marcada.
+3. **Trazabilidad de los criterios de aceptación.** Una fila por AC de la US: dónde se implementa y qué test lo demuestra.
 
-   | AC | Implementation | Test | Status |
+   | AC | Implementación | Test | Estado |
    | --- | --- | --- | --- |
-   | AC2.1 | `src/x.py:load()` | `tests/test_x.py::test_load` | PASS |
+   | AC2.1 | `app/lib/carrito.ts:calcularTotal()` | `app/lib/carrito.test.ts` › "suma el IVA" | PASS |
 
-   AC not implemented → MAJOR. AC implemented but no test covers it → MAJOR. Behavior beyond the AC and the `Agreement` of the epic (scope creep) → MAJOR.
-4. **Quality of new or modified code** (core, applies to every language):
-   - Function longer than 20 lines or nesting deeper than 3 levels → MAJOR.
-   - Logic duplicated from existing code that should be reused → MAJOR.
-   - Generic names without meaning (`handle`, `process`, `data`, `doIt`) → MAJOR.
-   - External input interpolated into SQL or shell commands → CRITICAL. Secrets logged or exposed in errors → MAJOR. Missing input validation at a public entry point → MAJOR.
-   - Main methods without a comment where one would help, changed behavior without tests → MINOR / MAJOR respectively (Definition of Done).
-   - Layer rules from `docs/ARCHITECTURE.md` broken (for example data access in a controller) → CRITICAL.
-5. **Stack catalogs** (if `skills/review/catalogs/` exists): read its `README.md`, activate the catalogs whose `activates_on` match the changed files (plus framework catalogs whose markers exist in the repository), and apply their rules with their severities. A changed file no catalog covers → `N/A — no catalog for <extension>`, and keep reviewing by reading. If the catalogs folder exists but holds no catalog, say the installation is incomplete; do not report every file as `N/A`.
-6. **Docs drift.** A documented contract (`docs/ARCHITECTURE.md`, README, API docs) contradicted by the change → MAJOR.
+   AC no implementado → MAJOR. AC implementado pero sin test que lo cubra → MAJOR. Comportamiento más allá de los AC y del `Acuerdo` de la épica (deriva de alcance) → MAJOR.
+4. **Calidad del código nuevo o modificado** (núcleo, aplica a cualquier lenguaje):
+   - Función de más de 20 líneas o anidamiento de más de 3 niveles → MAJOR.
+   - Lógica duplicada de código existente que debería reutilizarse → MAJOR.
+   - Nombres genéricos sin significado (`manejar`, `procesar`, `datos`, `hacerlo`) → MAJOR.
+   - Código que no sigue la convención de idioma de `AGENTS.md` (identificadores o comentarios en inglés sin ser API externa o convención del framework) → MINOR.
+   - Entrada externa interpolada en SQL o en comandos de shell → CRITICAL. Secretos en logs o expuestos en errores → MAJOR. Falta de validación de entrada en un punto de entrada público → MAJOR.
+   - Métodos principales sin comentario donde ayudaría → MINOR; comportamiento cambiado sin tests → MAJOR (Definition of Done).
+   - Reglas de capas de `docs/ARCHITECTURE.md` rotas (por ejemplo, escribir pedidos desde el navegador en vez de desde una Edge Function) → CRITICAL.
+5. **Catálogos del stack** (si existe `skills/review/catalogs/`): lee su `README.md`, activa los catálogos cuyo `activates_on` encaje con los ficheros cambiados y aplica sus reglas con sus severidades. Un fichero cambiado que ningún catálogo cubre → `N/A — sin catálogo para <extensión>`, y sigue revisando leyendo. Si la carpeta de catálogos existe pero no tiene ninguno, di que la instalación está incompleta; no marques todos los ficheros como `N/A`.
+6. **Deriva de la documentación.** Un contrato documentado (`docs/ARCHITECTURE.md`, README, documentación de API) contradicho por el cambio → MAJOR.
 
-## Mode `spec`: `/sdd-review spec EPICX`
+## Modo `spec`: `/sdd-review spec EPICX`
 
-Check the epic before it leaves `spec`:
+Comprueba la épica antes de que salga de `spec`:
 
-- Every US follows the template and meets the Definition of Ready in `AGENTS.md`.
-- Every AC is testable (Given/When/Then, observable result). Vague words ("fast", "user-friendly") without a measure → MAJOR.
-- **Implementability:** could a developer who did not write this spec implement it from the spec alone? Every gap that needs unwritten knowledge → MAJOR.
-- Consistency with the `Agreement`, `Non-Goals`, `specs/SPECS.md` and `specs/CAPABILITIES.md` (contradictions, duplicated capabilities) → MAJOR.
+- Cada US sigue la plantilla y cumple la Definition of Ready de `AGENTS.md`.
+- Cada AC es comprobable (Dado/Cuando/Entonces, resultado observable). Palabras vagas ("rápido", "fácil de usar") sin una medida → MAJOR.
+- **Implementabilidad:** ¿podría implementarla a partir de la spec un desarrollador que no la escribió? Cada hueco que requiera conocimiento no escrito → MAJOR.
+- Coherencia con el `Acuerdo`, los `No-objetivos`, `specs/SPECS.md` y `specs/CAPABILITIES.md` (contradicciones, capacidades duplicadas) → MAJOR.
 
-## Verdict (mechanical, no discretion)
+## Veredicto (mecánico, sin discreción)
 
-- `REJECTED`: at least one CRITICAL.
-- `CHANGES_REQUESTED`: no CRITICAL, at least one MAJOR.
-- `APPROVED`: no CRITICAL and no MAJOR (MINOR allowed).
-- `NOT_VERIFIED`: an essential check could not run. It is not a verdict on the code; it says what is missing.
+- `REJECTED`: al menos un CRITICAL.
+- `CHANGES_REQUESTED`: ningún CRITICAL y al menos un MAJOR.
+- `APPROVED`: ningún CRITICAL ni MAJOR (se permiten MINOR).
+- `NOT_VERIFIED`: una comprobación esencial no se pudo ejecutar. No es un veredicto sobre el código; dice qué falta.
 
-`N/A` rows never count as approvals. Observations on untouched code never count.
+Las filas `N/A` nunca cuentan como aprobaciones. Las observaciones sobre código no tocado nunca cuentan.
 
-## Report Format (append to `specs/EPICX/REVIEW.md`)
+## Formato del informe (se añade a `specs/EPICX/REVIEW.md`)
 
 ```markdown
-## USn - Review k (YYYY-MM-DD)
+## USn - Revisión k (AAAA-MM-DD)
 
-**Verdict:** APPROVED | CHANGES_REQUESTED | REJECTED | NOT_VERIFIED
+**Veredicto:** APPROVED | CHANGES_REQUESTED | REJECTED | NOT_VERIFIED
 
 ### Tests
-<command, result>
+<comando, resultado>
 
-### Acceptance Criteria
-<traceability table>
+### Criterios de aceptación
+<tabla de trazabilidad>
 
-### Findings (new or modified code)
-1. [CRITICAL|MAJOR|MINOR] `file:line` - problem - required correction
+### Hallazgos (código nuevo o modificado)
+1. [CRITICAL|MAJOR|MINOR] `fichero:línea` - problema - corrección necesaria
 
-### Observations (untouched code, non-blocking)
+### Observaciones (código no tocado, no bloqueantes)
 - ...
 
 ### N/A
-- <check> - <reason>
+- <comprobación> - <motivo>
 ```
 
-Write the report in the documentation language declared in `AGENTS.md`. Return to the caller only the verdict and the numbered findings.
+Escribe el informe en español, el idioma declarado en `AGENTS.md`. Devuelve a quien te invocó solo el veredicto y los hallazgos numerados.

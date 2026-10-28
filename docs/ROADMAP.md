@@ -1,9 +1,9 @@
 # ROADMAP
 
-Status legend: `new` → `spec` → `plan` → `tasks` → `implement` → `review` → `done`.
+Leyenda de estados: `new` → `spec` → `plan` → `tasks` → `implement` → `review` → `done`.
 
-| ID    | Name                     | Objective                                                                                                                                   | Status    | Finished |
-| ----- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- |
+| ID    | Nombre                   | Objetivo                                                                                                                                    | Estado    | Terminada |
+| ----- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------- |
 | EPIC0 | Fundación                | Constitución, specs, arquitectura y roadmap con las respuestas del PM para empezar los sprints SDD.                                         | implement |          |
 | EPIC1 | Base técnica             | Proyecto React Router + TypeScript, Supabase conectado, guía visual, tests y despliegue automático en Cloudflare con URL de pruebas.        | new       |          |
 | EPIC2 | Catálogo                 | Inicio, categorías, listado con filtros (categoría, talla, precio), búsqueda y ficha de producto con selector de talla.                     | new       |          |
@@ -16,7 +16,7 @@ Status legend: `new` → `spec` → `plan` → `tasks` → `implement` → `revi
 
 ## Backlog
 
-Ideas, deferred review findings and requests that are not epics yet. Promote an item to an epic (status `new`) when the PM decides to schedule it.
+Ideas, hallazgos de revisión aplazados y peticiones que aún no son épicas. Un punto se convierte en épica (estado `new`) cuando el PM decide programarlo.
 
 - Lista de deseos.
 - Reseñas de producto.
@@ -24,9 +24,9 @@ Ideas, deferred review findings and requests that are not epics yet. Promote an 
 - Newsletter.
 - Cursos de patronaje.
 
-## Notes
+## Notas
 
-- `EPIC0` is the default epic of every Agile SDD project. It ships scaffolded and starts in `implement`.
-- Each epic lives in `specs/EPICX/` with its own `EPICX.md`, `PLAN.md`, `TASKS.md` and, once reviewed, `REVIEW.md`.
-- Only one epic is active at a time. Keep roadmap entries short and actionable.
+- `EPIC0` es la épica por defecto de todo proyecto Agile SDD. Viene con el scaffold y empieza en `implement`.
+- Cada épica vive en `specs/EPICX/` con su `EPICX.md`, `PLAN.md`, `TASKS.md` y, una vez revisada, `REVIEW.md`.
+- Solo hay una épica activa a la vez. Las entradas del roadmap son cortas y accionables.
 - Hasta que exista el panel (EPIC7), los productos de prueba se cargan con `supabase/seed.sql` o desde Supabase Studio.

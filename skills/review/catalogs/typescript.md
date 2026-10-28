@@ -14,17 +14,17 @@ substitutes: []
 
 # TypeScript
 
-Applies to new or modified TypeScript files. Composes with `javascript`: TypeScript compiles to JavaScript and the JavaScript rules hold for it, so they are not repeated here.
+Se aplica a los ficheros TypeScript nuevos o modificados. Se combina con `javascript`: TypeScript compila a JavaScript y las reglas de JavaScript valen para él, así que no se repiten aquí.
 
-> **Extraction note.** The rules below were embedded in the audit protocol as part of check *3.4 Strict Typing — JavaScript / TypeScript* before the catalog library existed. They are reproduced here unchanged, with their original severities, so that a TypeScript change produces the same set of findings as it did before the extraction.
+> **Nota de extracción.** Las reglas de abajo formaban parte de la comprobación *3.4 Tipado estricto — JavaScript / TypeScript* del protocolo de auditoría antes de que existiera la biblioteca de catálogos. Se reproducen sin cambios, con sus severidades originales.
 
-## Rules
+## Reglas
 
-### Typing
+### Tipado
 
-- Use of `any` without a justification comment → **MINOR**
-- Missing explicit types on public function parameters or returns where inferable → **MINOR**
+- Uso de `any` sin un comentario que lo justifique → **MINOR**
+- Falta de tipos explícitos en parámetros o retornos de funciones públicas → **MINOR**
 
-## Tooling notes
+## Notas de herramientas
 
-No static analysis tool is declared for this catalog. A project that runs `tsc --noEmit` or ESLint with type-aware rules can declare it in its own `quality-profile.md`, which is additive.
+Este catálogo no declara ninguna herramienta de análisis estático. Un proyecto que ejecute `tsc --noEmit` o ESLint con reglas de tipos puede declararlo en su propio `quality-profile.md`, que es aditivo.

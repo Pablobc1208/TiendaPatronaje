@@ -10,52 +10,50 @@ artifact_shape: flat
 tools: []
 substitutes:
   - check: layer-integrity
-    reason: "stylesheets have no orchestration, domain, or persistence layer"
+    reason: "las hojas de estilo no tienen capa de orquestación, dominio ni persistencia"
   - check: query-in-loop
-    reason: "stylesheets do not access data sources"
+    reason: "las hojas de estilo no acceden a fuentes de datos"
 ---
 
 # CSS
 
-Applies to new or modified stylesheets, including the preprocessor dialects.
+Se aplica a las hojas de estilo nuevas o modificadas, incluidos los dialectos de preprocesadores. Con Tailwind, las reglas de valores a fuego y tokens aplican también a las clases arbitrarias (`text-[#c0392b]`, `mt-[13px]`).
 
-> **New coverage.** The previous protocol named CSS in its title — *"web PHP/JS/CSS projects"* — without defining a single check for it. This catalog is the first actual coverage of stylesheets, so a change touching CSS will now produce findings where it previously produced none. That is the intended correction of a gap, not a regression.
+## Reglas
 
-## Rules
+### Especificidad y cascada
 
-### Specificity and cascade
+- `!important` sin un comentario que lo justifique → **MAJOR**: impide sobrescribirlo después
+- Anidamiento de selectores de más de 3 niveles → **MAJOR**: coincide con el umbral de anidamiento del núcleo
+- Selectores de ID usados para dar estilo y no como ancla → **MINOR**
+- Selector cualificado por etiqueta cuando basta la clase (`div.tarjeta`) → **MINOR**
 
-- `!important` without a comment justifying it → **MAJOR** — it removes the ability to override downstream
-- Selector nesting deeper than 3 levels → **MAJOR** — matches the nesting threshold of the unconditional core
-- ID selectors used for styling rather than for anchoring → **MINOR**
-- A selector qualified by tag name where the class alone suffices (`div.card`) → **MINOR**
+### Duplicación
 
-### Duplication
+La regla DRY del núcleo aplica a las hojas de estilo igual que al código. Además:
 
-The DRY rule of the unconditional core applies to stylesheets as it does to code. In addition:
+- Un valor literal repetido en varias reglas cuando el proyecto define una variable o token para él → **MAJOR**, citando el token existente
+- Un bloque de declaraciones duplicado en vez de reutilizar una clase o mixin existente → **MAJOR**
 
-- A literal value repeated across rules where the project defines a custom property or preprocessor variable for it → **MAJOR**, referencing the existing token
-- A block of declarations duplicated instead of reusing an existing class or mixin → **MAJOR**
+### Valores a fuego
 
-### Hard-coded values
+- Color, espaciado, tamaño de letra o punto de corte escritos como literal cuando el proyecto tiene un token de diseño para ello → **MAJOR**
+- Valor numérico mágico sin comentario que explique de dónde sale → **MINOR**
 
-- Color, spacing, font size, or breakpoint written as a literal where the project has a design token for it → **MAJOR**
-- Magic numeric value with no comment explaining where it comes from → **MINOR**
+### Maquetación y robustez
 
-### Layout and robustness
+- Altura fija en píxeles en un contenedor con texto → **MAJOR**: se rompe con el desbordamiento y con el zoom de letra del usuario
+- Valor de `z-index` fuera de la escala declarada del proyecto, o un valor grande arbitrario → **MAJOR**
+- Una regla que depende del orden en el fichero en vez de una especificidad explícita → **MINOR**
 
-- Fixed pixel height on a container holding text content → **MAJOR** — breaks on overflow and on user font scaling
-- `z-index` value outside the project's declared scale, or an arbitrary large value → **MAJOR**
-- A rule relying on source order rather than on explicit specificity → **MINOR**
+### Nombres
 
-### Naming
+Los nombres de clase siguen la convención del proyecto (en español). Un nombre que describe la apariencia en vez del propósito (`.caja-roja`, `.mt-10-azul`) → **MINOR**; además aplican las reglas de nombres semánticos del núcleo.
 
-Class names follow the project's existing convention. A name that describes appearance rather than purpose (`.red-box`, `.mt-10-blue`) → **MINOR**; the semantic-naming rules of the unconditional core apply on top of this.
+### Reglas muertas
 
-### Dead rules
+- Un selector que no encaja con nada en las plantillas o componentes tocados por el cambio → **MINOR**, indicando que confirmarlo en todo el proyecto queda fuera del alcance del cambio
 
-- A selector that matches nothing in the templates or components touched by the change → **MINOR**, noting that confirmation across the whole project is out of the change's scope
+## Notas de herramientas
 
-## Tooling notes
-
-No static analysis tool is declared for this catalog. A project that runs Stylelint can declare it in its own `quality-profile.md`, which is additive.
+Este catálogo no declara ninguna herramienta de análisis estático. Un proyecto que ejecute Stylelint puede declararlo en su propio `quality-profile.md`, que es aditivo.

@@ -1,12 +1,12 @@
 # Skills
 
-This project includes a small skills bundle. `grill-me` is always installed; the rest are optional.
+Este proyecto incluye un pequeño paquete de skills. `grill-me` siempre está instalada; el resto son opcionales.
 
-## Credits
+## Créditos
 
-`grill-me`, `zoom-out` and `tdd` are adapted from `mattpocock/skills` (MIT). `review` and `debugging`, and the audit catalogs under `review/catalogs/`, are adapted from `devAgent` (MIT).
+`grill-me`, `zoom-out` y `tdd` están adaptadas de `mattpocock/skills` (MIT). `review` y `debugging`, y los catálogos de auditoría de `review/catalogs/`, están adaptados de `devAgent` (MIT).
 
-## Installed
+## Instaladas
 
 - `grill-me`: `auto`
 - `zoom-out`: `manual`
@@ -14,21 +14,21 @@ This project includes a small skills bundle. `grill-me` is always installed; the
 - `review`: `auto`
 - `debugging`: `manual`
 
-## Mode Policy
+## Política de modos
 
-- `auto`: the agent may use the skill proactively when the task matches the policy in the skill file.
-- `manual`: the agent loads the skill only when the user asks for it or the task clearly calls for it.
-- `none`: the skill was not installed.
+- `auto`: el agente puede usar la skill por iniciativa propia cuando la tarea encaja con la política del fichero de la skill.
+- `manual`: el agente carga la skill solo cuando el usuario la pide o la tarea claramente la necesita.
+- `none`: la skill no se instaló.
 
-## Triggers
+## Disparadores
 
-- `/grillme` clarification during `spec` and `plan`.
-- `/zoomout` consistency review before `implement`.
-- `/tdd` red-green-refactor pass.
-- `/sdd-review <EPICX/USn>` independent review of a user story (or `/sdd-review spec <EPICX>` for the spec).
-- `/sdd-debug` root-cause debugging of a failing test or a bug.
-- `/sdd` resume the workflow from `docs/ROADMAP.md`.
+- `/grillme` aclaración durante `spec` y `plan`.
+- `/zoomout` revisión de coherencia antes de `implement`.
+- `/tdd` pasada rojo-verde-refactor.
+- `/sdd-review <EPICX/USn>` revisión independiente de una historia de usuario (o `/sdd-review spec <EPICX>` para la spec).
+- `/sdd-debug` depuración por causa raíz de un test que falla o de un bug.
+- `/sdd` retomar el flujo desde `docs/ROADMAP.md`.
 
-The slash commands are thin wrappers installed for each platform chosen at install time (`.claude/commands/`, `.agent/workflows/`, `.opencode/commands/`). They only point here: these `SKILL.md` files are the single source of truth.
+Los comandos son envoltorios mínimos instalados para cada plataforma elegida al instalar (`.claude/commands/`, `.agent/workflows/`, `.opencode/commands/`). Solo apuntan aquí: estos ficheros `SKILL.md` son la única fuente de verdad.
 
-New commands carry the `sdd-` prefix so they never collide with built-in commands of the host tool (Claude Code already ships its own `/review`).
+Los comandos nuevos llevan el prefijo `sdd-` para no chocar con los comandos propios de la herramienta (Claude Code ya trae su propio `/review`).

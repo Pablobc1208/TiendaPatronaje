@@ -1,7 +1,7 @@
-# Changelog
+# Registro de cambios
 
-One dated entry per closed epic, most recent first. Written during `Close`.
+Una entrada con fecha por épica cerrada, la más reciente primero. Se escribe durante `Close`.
 
-## [Unreleased]
+## [Sin publicar]
 
-- (nothing yet)
+- (nada todavía)

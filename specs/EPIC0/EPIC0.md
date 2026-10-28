@@ -1,40 +1,40 @@
-# EPIC0 - Lay the foundation
+# EPIC0 - Fundación
 
-This file is the canonical epic template for future `specs/EPICX/` folders. Keep the headings; replace the content.
+Este fichero es también la plantilla de épica para las futuras carpetas `specs/EPICX/`. Mantén los títulos y sustituye el contenido.
 
-## Problem
+## Problema
 
-The project has no agreed specs, architecture, roadmap or agent rules yet, so agents would have to guess.
+El proyecto aún no tiene specs, arquitectura, roadmap ni reglas para los agentes acordadas, así que los agentes tendrían que adivinar.
 
-## Objective
+## Objetivo
 
-Create the basic foundation of the project: agents constitution, initial specs, architecture and initial roadmap, so the project can start normal SDD sprints.
+Crear la base del proyecto: constitución de los agentes, specs iniciales, arquitectura y roadmap inicial, para que el proyecto pueda empezar los sprints SDD normales.
 
-## Non-Goals
+## No-objetivos
 
-- Writing product code.
-- Defining the user stories of future epics in detail (only their names and objectives).
+- Escribir código del producto.
+- Definir en detalle las historias de usuario de las épicas futuras (solo sus nombres y objetivos).
 
-## User Stories
+## Historias de usuario
 
 ### US0
 
-As a product manager I want to define the basics of the project so that it can be developed following Agile SDD by AI agents and developers.
+Como product manager, quiero definir las bases del proyecto, para que agentes de IA y desarrolladores puedan desarrollarlo siguiendo Agile SDD.
 
-Acceptance criteria:
+Criterios de aceptación:
 
-- **AC0.1** Given the scaffold, when EPIC0 is done, then `specs/SPECS.md` describes what, why, how, non-goals and operating principles with the PM's own answers, and no template instructions remain.
-- **AC0.2** Given the scaffold, when EPIC0 is done, then `docs/ARCHITECTURE.md` names the stack, the project structure, the test command and the developer practices chosen by the PM.
-- **AC0.3** Given the scaffold, when EPIC0 is done, then `docs/ROADMAP.md` lists at least the next epic with its objective, marked `new`.
-- **AC0.4** Given the scaffold, when EPIC0 is done, then `AGENTS.md` declares the documentation language and any extra rules the PM asked for.
+- **AC0.1** Dado el scaffold, cuando EPIC0 esté terminada, entonces `specs/SPECS.md` describe qué, por qué, cómo, no-objetivos y principios de funcionamiento con las respuestas del propio PM, y no queda ninguna instrucción de plantilla.
+- **AC0.2** Dado el scaffold, cuando EPIC0 esté terminada, entonces `docs/ARCHITECTURE.md` nombra el stack, la estructura del proyecto, el comando de tests y las prácticas de desarrollo elegidas por el PM.
+- **AC0.3** Dado el scaffold, cuando EPIC0 esté terminada, entonces `docs/ROADMAP.md` enumera al menos la siguiente épica con su objetivo, marcada `new`.
+- **AC0.4** Dado el scaffold, cuando EPIC0 esté terminada, entonces `AGENTS.md` declara el idioma del proyecto y las reglas extra que haya pedido el PM.
 
-## Agreement
+## Acuerdo
 
-Outcome of the clarification (`grill-me`). Reviewers check the work against this section.
+Resultado de la aclaración (`grill-me`). Los revisores comprueban el trabajo contra esta sección.
 
 Entrevista con el PM (Pablo), 2026-10-28.
 
-- Decisions:
+- Decisiones:
   - Pasarela de pago: Stripe. Sin transferencia bancaria.
   - Sin productos físicos ni envíos: los patrones se entregan en PDF al correo que indica el cliente al comprar.
   - De la tienda antigua solo se migran los productos.
@@ -45,14 +45,14 @@ Entrevista con el PM (Pablo), 2026-10-28.
   - Dominio: se decide más adelante (EPIC8); mientras, URL de pruebas de Cloudflare.
   - Fotos, logo y textos: los aporta el PM cuando hagan falta.
   - Diseño: una sola guía visual, sin rondas de referencias.
-  - Documentación en español; código en inglés.
-- Risks:
+  - Todo el proyecto en español: documentación, código, comentarios y commits.
+- Riesgos:
   - Formato legal de la factura (datos fiscales de Clemen, numeración): validar con su gestoría antes de EPIC4.
   - PDF grandes pueden superar el límite de adjuntos del proveedor de correo: usar enlace firmado como alternativa.
-- Open questions:
+- Preguntas abiertas:
   - Proveedor de correo (propuesta: Resend), a cerrar en la spec de EPIC4.
 
-## Related Files
+## Ficheros relacionados
 
 - `AGENTS.md`
 - `docs/ARCHITECTURE.md`
@@ -63,8 +63,8 @@ Entrevista con el PM (Pablo), 2026-10-28.
 
 ## Retro
 
-Filled when the epic is closed.
+Se rellena al cerrar la épica.
 
-- Keep:
-- Change:
-- Action:
+- Mantener:
+- Cambiar:
+- Acción:

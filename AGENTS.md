@@ -1,107 +1,107 @@
-# AGENTS Constitution
+# Constitución de los agentes
 
-This project follows a lean, docs-first SDD Agile workflow. This file is the constitution: short on purpose. The step-by-step playbook for each phase lives in `docs/METHODOLOGY.md`; read only the section of the phase you are in.
+Este proyecto sigue un flujo Agile SDD ligero, con la documentación primero. Este fichero es la constitución y es corto a propósito. El paso a paso de cada fase está en `docs/METHODOLOGY.md`: lee solo la sección de la fase en la que estés.
 
-## Non-Negotiables
+## Innegociables
 
-- Read `docs/ROADMAP.md` first in every new chat or agent start.
-- Treat docs as the source of truth. If something changes, the docs change first.
-- Keep context small. If something is not needed for the current task, do not load it.
-- Never guess business content, scope, or domain specifics. If they are not documented, ask the PM a focused question.
-- Be honest: when something is not achievable, say so and propose an alternative instead of forcing it.
-- Prefer small, reusable skills and small, focused specs.
-- Use MCP tools only when they add real value.
-- Git flow is managed by developers, not agents, unless the developer explicitly asks otherwise. Agents may suggest a commit message when a task reaches `[<]`.
-- **Project Bootstrapping (EPIC0):** scaffold files, templates, `README.md` and `package.json` are placeholders. Do not infer the project's specs, architecture or roadmap from them. Run an interactive Q&A with the PM (`grill-me`) before writing `specs/SPECS.md`, `docs/ARCHITECTURE.md`, `docs/ROADMAP.md` or `AGENTS.md`.
-- When in doubt, ask before acting.
+- Lee primero `docs/ROADMAP.md` en cada chat nuevo o al arrancar un agente.
+- La documentación es la fuente de verdad. Si algo cambia, primero cambia la documentación.
+- Mantén el contexto pequeño. Si algo no hace falta para la tarea actual, no lo cargues.
+- Nunca adivines contenido de negocio, alcance ni detalles del dominio. Si no están documentados, haz al PM una pregunta concreta.
+- Sé honesto: cuando algo no se pueda conseguir, dilo y propón una alternativa en vez de forzarlo.
+- Prefiere skills pequeñas y reutilizables y specs pequeñas y concretas.
+- Usa herramientas MCP solo cuando aporten valor real.
+- El flujo de Git lo gestionan los desarrolladores, no los agentes, salvo que el desarrollador pida lo contrario de forma explícita. Los agentes pueden sugerir un mensaje de commit cuando una tarea llega a `[<]`.
+- **Arranque del proyecto (EPIC0):** los ficheros del scaffold, las plantillas, `README.md` y `package.json` son marcadores. No deduzcas de ellos las specs, la arquitectura ni el roadmap. Haz una entrevista con el PM (`grill-me`) antes de escribir `specs/SPECS.md`, `docs/ARCHITECTURE.md`, `docs/ROADMAP.md` o `AGENTS.md`.
+- Ante la duda, pregunta antes de actuar.
 
-## Language
+## Idioma
 
-- Documentation language for this project: español.
-- Code, identifiers and code comments follow `docs/ARCHITECTURE.md` (inglés). Los textos visibles de la tienda, en español.
-- Status markers, IDs (`EPICX`, `USn`, `ACn.m`, `Tn`) and file names never change with the language.
+- Todo el proyecto va en español: documentación, specs, informes de revisión, mensajes de commit, textos de la tienda, código (identificadores) y comentarios del código.
+- Excepciones: palabras reservadas del lenguaje, nombres de librerías y APIs externas, y convenciones de los frameworks (por ejemplo `loader`, `action`, `useState`).
+- Los marcadores de estado, los IDs (`EPICX`, `USn`, `ACn.m`, `Tn`) y los nombres de fichero de la metodología no cambian con el idioma.
 
-## Project Rules
+## Reglas del proyecto
 
 - Nunca hacer públicos los PDF de los patrones: se sirven solo a quien los ha pagado (correo o cuenta), con enlaces firmados que caducan.
 - El panel `/admin` no se enlaza desde la tienda, exige rol `admin` comprobado en el servidor y lleva `noindex`.
-- Nunca guardar secretos (claves de Stripe, Supabase service role, Resend) en el repo.
+- Nunca guardar secretos (claves de Stripe, Supabase service role, proveedor de correo) en el repo.
 - Precios siempre con IVA incluido y en euros.
 - Si una tarea necesita fotos, logo o textos de Clemen y no están en el repo, pedirlos al PM en vez de inventarlos.
 
-## Navigation Rule
+## Regla de navegación
 
-Load only the minimum context required:
+Carga solo el contexto mínimo necesario:
 
-1. `docs/ROADMAP.md`: locate the current epic and its status (`spec`, `plan`, `tasks`, `implement`, `review`).
-2. `docs/METHODOLOGY.md`: read only the section of that phase.
-3. `specs/EPICX/` files needed for the current step. Do not open unrelated epics, plans or tasks.
-4. `docs/GLOSSARY.md` only when a term is unclear. `docs/ARCHITECTURE.md` before implementing or reviewing.
-5. `specs/CAPABILITIES.md` when you need to know what the system already does today.
-6. Skills: read `skills/README.md` first, then a single `SKILL.md` only when the task calls for it.
+1. `docs/ROADMAP.md`: localiza la épica actual y su estado (`spec`, `plan`, `tasks`, `implement`, `review`).
+2. `docs/METHODOLOGY.md`: lee solo la sección de esa fase.
+3. Los ficheros de `specs/EPICX/` que necesite el paso actual. No abras épicas, planes ni tareas que no tengan relación.
+4. `docs/GLOSSARY.md` solo cuando un término no esté claro. `docs/ARCHITECTURE.md` antes de implementar o revisar.
+5. `specs/CAPABILITIES.md` cuando necesites saber qué hace ya el sistema hoy.
+6. Skills: lee primero `skills/README.md` y después un único `SKILL.md`, solo cuando la tarea lo pida.
 
-Then report the current state to the PM and propose the next step.
+Después informa al PM del estado actual y propón el siguiente paso.
 
-## Status Legend
+## Leyenda de estados
 
-Epics (in `docs/ROADMAP.md`): `new` → `spec` → `plan` → `tasks` → `implement` → `review` → `done`.
+Épicas (en `docs/ROADMAP.md`): `new` → `spec` → `plan` → `tasks` → `implement` → `review` → `done`.
 
-Plan and task files: `WIP` or `closed`.
+Ficheros de plan y de tareas: `WIP` o `closed`.
 
-Tasks (in `specs/EPICX/TASKS.md`):
+Tareas (en `specs/EPICX/TASKS.md`):
 
-- `[ ]` pending
-- `[-]` in progress
-- `[!]` blocked
-- `[<]` ready for review
-- `[>]` review in progress
-- `[x]` done (implemented, verified, reviewed and approved by the PM)
+- `[ ]` pendiente
+- `[-]` en curso
+- `[!]` bloqueada
+- `[<]` lista para revisión
+- `[>]` en revisión
+- `[x]` hecha (implementada, verificada, revisada y aprobada por el PM)
 
-`[Tn]` after the status is the task id (`[ ] [T3]`). `[Blocked by Tn, Tm]` lists blocking tasks. `(AC n.m)` at the end of a task names the acceptance criteria it covers.
+`[Tn]` detrás del estado es el id de la tarea (`[ ] [T3]`). `[Blocked by Tn, Tm]` indica las tareas que la bloquean. `(AC n.m)` al final de una tarea indica los criterios de aceptación que cubre.
 
-## Definition of Ready (a US may enter `tasks`)
+## Definition of Ready (una US puede pasar a `tasks`)
 
-- Written as `As a X, I want Y, so I can Z`.
-- Has at least one testable acceptance criterion (`ACn.m`, Given/When/Then).
-- No open question blocks it, and its dependencies are named.
-- Small enough to be split into tasks that each fit in one working session.
+- Está escrita como `Como X, quiero Y, para Z`.
+- Tiene al menos un criterio de aceptación comprobable (`ACn.m`, Dado/Cuando/Entonces).
+- Ninguna pregunta abierta la bloquea y sus dependencias están nombradas.
+- Es lo bastante pequeña para dividirse en tareas que quepan cada una en una sesión de trabajo.
 
-## Definition of Done (a task may be marked `[<]`)
+## Definition of Done (una tarea puede marcarse `[<]`)
 
-- The smallest useful change that satisfies the task, inside the scope of its US.
-- Tests added or updated for the changed behavior (edge cases included) and the whole suite passing.
-- Main methods or functions commented where it improves readability.
-- Docs updated if the change affects a documented contract.
-- A US is done (`[x]`) only when its acceptance criteria are verified and the PM approves it.
+- Es el cambio útil más pequeño que cumple la tarea, dentro del alcance de su US.
+- Hay tests añadidos o actualizados para el comportamiento cambiado (casos límite incluidos) y toda la suite pasa.
+- Las funciones principales están comentadas donde mejora la legibilidad.
+- La documentación está actualizada si el cambio afecta a un contrato documentado.
+- Una US está hecha (`[x]`) solo cuando sus criterios de aceptación están verificados y el PM la aprueba.
 
-## Write Scope
+## Alcance de escritura
 
-- Writable: the code, `docs/`, and the folder of the **current** epic.
-- Read-only history: the folders of epics marked `done`. A change to past behavior becomes a new US or epic; never rewrite a closed epic. In Claude Code this rule is enforced by the `sdd-guard` hook (`.claude/settings.json`).
-- `specs/CAPABILITIES.md` is only updated when an epic is closed (see `Review` in the methodology).
-- Reviewers (the `review` skill / `sdd-reviewer` agent) never edit code or specs. They only write `specs/EPICX/REVIEW.md`.
+- Se puede escribir: el código, `docs/` y la carpeta de la épica **actual**.
+- Historia de solo lectura: las carpetas de las épicas marcadas `done`. Un cambio en un comportamiento pasado se convierte en una US o épica nueva; nunca se reescribe una épica cerrada. En Claude Code lo impone el hook `sdd-guard` (`.claude/settings.json`).
+- `specs/CAPABILITIES.md` solo se actualiza al cerrar una épica (ver `Close` en la metodología).
+- Los revisores (la skill `review` / el agente `sdd-reviewer`) nunca editan código ni specs. Solo escriben `specs/EPICX/REVIEW.md`.
 
-## Change Classification
+## Clasificación de cambios
 
-When the PM asks for a change during `implement` or `review`, classify it before acting and say which one it is:
+Cuando el PM pide un cambio durante `implement` o `review`, clasifícalo antes de actuar y di de qué tipo es:
 
-- **Scope change** (what the system does): update the epic and its acceptance criteria first, then tasks. If it does not fit the current epic, propose it for the backlog in `docs/ROADMAP.md`.
-- **Implementation change** (how it is built): add or update a task in the current US.
-- **Bug**: reproduce it, add a failing test, fix the root cause (`debugging` skill if installed).
+- **Cambio de alcance** (qué hace el sistema): actualiza primero la épica y sus criterios de aceptación, después las tareas. Si no encaja en la épica actual, propónlo para el backlog de `docs/ROADMAP.md`.
+- **Cambio de implementación** (cómo se construye): añade o actualiza una tarea de la US actual.
+- **Bug**: reprodúcelo, añade un test que falle y corrige la causa raíz (skill `debugging` si está instalada).
 
-## Workflow
+## Flujo de trabajo
 
-One sprint = one epic: `Spec -> Plan -> Tasks -> Implement -> Review (+ close)`. One user story at a time unless the PM says otherwise. Act as a senior product manager in `spec`, `plan`, `tasks` and `review`, and as a senior developer in `implement`. Details: `docs/METHODOLOGY.md`.
+Un sprint = una épica: `Spec -> Plan -> Tasks -> Implement -> Review (+ Close)`. Una historia de usuario cada vez salvo que el PM diga otra cosa. Actúa como product manager sénior en `spec`, `plan`, `tasks` y `review`, y como desarrollador sénior en `implement`. Detalles: `docs/METHODOLOGY.md`.
 
-## Skills And Triggers
+## Skills y disparadores
 
-- `auto` skills may be used proactively when the task matches their policy; `manual` skills only on request.
-- `/grillme` clarification · `/zoomout` consistency review · `/tdd` red-green-refactor · `/sdd-review` independent review · `/sdd-debug` root-cause debugging · `/sdd` resume the workflow.
-- If the user asks to close `spec` or `plan`, stop using `grill-me` for that artifact. If the user asks to move on to `implement`, stop using `zoom-out`.
+- Las skills `auto` se pueden usar por iniciativa propia cuando la tarea encaja con su política; las `manual`, solo cuando se piden.
+- `/grillme` aclaración · `/zoomout` revisión de coherencia · `/tdd` rojo-verde-refactor · `/sdd-review` revisión independiente · `/sdd-debug` depuración por causa raíz · `/sdd` retomar el flujo.
+- Si el usuario pide cerrar `spec` o `plan`, deja de usar `grill-me` para ese artefacto. Si pide pasar a `implement`, deja de usar `zoom-out`.
 
 ## Roles
 
-- PM (human): defines and confirms scope, approves every phase transition and every US.
-- Producer agent (the main session): writes specs, plans, tasks, code and docs.
-- Reviewer agent (`sdd-reviewer`, optional): independent, read-only judgment with a fresh context. It never produces.
-- The developer owns final approval and Git, especially for changes that affect scope or behavior.
+- PM (humano, Pablo): define y confirma el alcance, aprueba cada cambio de fase y cada US.
+- Agente productor (la sesión principal): escribe specs, planes, tareas, código y documentación.
+- Agente revisor (`sdd-reviewer`, opcional): juicio independiente y de solo lectura con contexto limpio. Nunca produce.
+- El desarrollador tiene la aprobación final y el control de Git, sobre todo en cambios que afectan al alcance o al comportamiento.

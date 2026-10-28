@@ -1,45 +1,45 @@
 ---
 name: grill-me
-description: Stress-test an idea, epic, user story or plan with focused questions before writing specs or code.
+description: Pone a prueba una idea, épica, historia de usuario o plan con preguntas concretas antes de escribir specs o código.
 mode: auto
 ---
 
 # Grill Me
 
-Use when the PM needs help turning an idea into a clear epic, user story, acceptance criteria or plan.
+Úsala cuando el PM necesite ayuda para convertir una idea en una épica, historia de usuario, criterios de aceptación o plan claros.
 
-## Goal
+## Objetivo
 
-Remove ambiguity with the smallest useful set of questions, and leave a written agreement that later phases and reviewers can check against.
+Eliminar la ambigüedad con el menor conjunto útil de preguntas y dejar un acuerdo escrito contra el que puedan comprobar las fases siguientes y los revisores.
 
-## Auto Policy
+## Política automática
 
-- Use automatically at the start of `spec` and `plan`, and for every EPIC0 bootstrap task.
-- Use automatically when a new epic or user story appears and still needs scope sharpening.
-- Use automatically when acceptance criteria, constraints or dependencies are unclear.
-- Stop when the PM explicitly asks to close `spec` or `plan`. Generic agreement ("ok", "sounds good") answers the current question; it does not close the phase.
-- Do not use for trivial edits, already-specified implementation work, or when the PM wants execution now.
+- Úsala automáticamente al empezar `spec` y `plan`, y en cada tarea de arranque de EPIC0.
+- Úsala automáticamente cuando aparezca una épica o historia nueva que aún necesite afinar su alcance.
+- Úsala automáticamente cuando los criterios de aceptación, las restricciones o las dependencias no estén claros.
+- Para cuando el PM pida explícitamente cerrar `spec` o `plan`. Un acuerdo genérico ("ok", "me parece bien") responde a la pregunta actual; no cierra la fase.
+- No la uses para ediciones triviales, trabajo de implementación ya especificado o cuando el PM quiera ejecución ya.
 
-## Manual Trigger
+## Disparador manual
 
-- `/grillme` forces a clarification pass even if the agent would not have selected it.
+- `/grillme` fuerza una pasada de aclaración aunque el agente no la hubiera elegido.
 
-## Process
+## Proceso
 
-- Ask **one question at a time**, and offer your recommended answer with a one-line reason. The PM can accept it, correct it or skip.
-- Read the existing docs and code first; never ask something the repository already answers.
-- Cover: outcome, actors, constraints, dependencies, non-goals, edge cases and how we will know it works (acceptance criteria).
-- Surface tradeoffs and hidden edge cases; propose alternatives when one exists.
-- Write nothing to specs while grilling. Stop once the next artifact can be written without guessing.
+- Haz **una pregunta cada vez** y ofrece tu respuesta recomendada con un motivo de una línea. El PM puede aceptarla, corregirla o saltarla.
+- Lee primero la documentación y el código existentes; nunca preguntes algo que el repositorio ya responde.
+- Cubre: resultado, actores, restricciones, dependencias, no-objetivos, casos límite y cómo sabremos que funciona (criterios de aceptación).
+- Saca a la luz compromisos y casos límite ocultos; propón alternativas cuando las haya.
+- No escribas nada en las specs mientras preguntas. Para en cuanto el siguiente artefacto se pueda escribir sin adivinar.
 
-## Do Not
+## No hagas
 
-- Start implementing.
-- Ask endless or bundled questions.
-- Collect details that do not change a decision.
+- Empezar a implementar.
+- Preguntas interminables o agrupadas.
+- Recoger detalles que no cambian ninguna decisión.
 
-## Output
+## Salida
 
-- A concise summary of the clarified scope, ready to be written into the epic (`Problem`, `Non-Goals`, `User Stories`, acceptance criteria).
-- The `Agreement` section of the epic: decisions taken, risks, open questions.
-- The best next step: spec, plan or task split.
+- Un resumen conciso del alcance aclarado, listo para escribirlo en la épica (`Problema`, `No-objetivos`, `Historias de usuario`, criterios de aceptación).
+- La sección `Acuerdo` de la épica: decisiones tomadas, riesgos, preguntas abiertas.
+- El mejor siguiente paso: spec, plan o división en tareas.

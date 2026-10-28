@@ -1,21 +1,21 @@
-# Capabilities
+# Capacidades
 
-The living spec: what the system does **today**, one section per capability. Epic files are the history of how we got here; this file is the current picture, so nobody has to replay every epic to know how something works.
+La spec viva: lo que el sistema hace **hoy**, una sección por capacidad. Los ficheros de las épicas son la historia de cómo llegamos aquí; este fichero es la foto actual, para que nadie tenga que repasar todas las épicas para saber cómo funciona algo.
 
-Rules:
+Reglas:
 
-- Updated only when an epic is closed (see `Close` in `docs/METHODOLOGY.md`).
-- Describe observable behavior, not implementation. Link to the US and AC that define it instead of copying them.
-- When an epic changes an existing capability, rewrite its section and add the new source; do not append contradictions.
+- Solo se actualiza al cerrar una épica (ver `Close` en `docs/METHODOLOGY.md`).
+- Describe el comportamiento observable, no la implementación. Enlaza a las US y AC que lo definen en vez de copiarlas.
+- Cuando una épica cambia una capacidad existente, reescribe su sección y añade la nueva fuente; no añadas contradicciones al final.
 
-## Template
+## Plantilla
 
-### <Capability name>
+### <Nombre de la capacidad>
 
-- What it does: one or two sentences.
-- Defined by: `EPICX/USn` (AC n.1, n.2)
-- Last changed: `EPICX` (YYYY-MM-DD)
+- Qué hace: una o dos frases.
+- Definida por: `EPICX/USn` (AC n.1, n.2)
+- Último cambio: `EPICX` (AAAA-MM-DD)
 
 ---
 
-No capabilities yet. EPIC0 only produces documentation.
+Aún no hay capacidades. EPIC0 solo produce documentación.

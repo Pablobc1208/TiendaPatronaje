@@ -14,16 +14,16 @@ substitutes: []
 
 # JavaScript
 
-Applies to new or modified JavaScript files.
+Se aplica a los ficheros JavaScript nuevos o modificados.
 
-> **Extraction note.** The rule below was embedded in the audit protocol as part of check *3.4 Strict Typing — JavaScript / TypeScript* before the catalog library existed. It is reproduced here unchanged, with its original severity, so that a JavaScript change produces the same set of findings as it did before the extraction.
+> **Nota de extracción.** La regla de abajo formaba parte de la comprobación *3.4 Tipado estricto — JavaScript / TypeScript* del protocolo de auditoría antes de que existiera la biblioteca de catálogos. Se reproduce sin cambios, con su severidad original.
 
-## Rules
+## Reglas
 
-### Typing
+### Tipado
 
-- Complex functions without JSDoc type annotations → **MINOR**
+- Funciones complejas sin anotaciones de tipo JSDoc → **MINOR**
 
-## Tooling notes
+## Notas de herramientas
 
-No static analysis tool is declared for this catalog. A project that runs ESLint or a type checker over plain JavaScript can declare it in its own `quality-profile.md`, which is additive.
+Este catálogo no declara ninguna herramienta de análisis estático. Un proyecto que ejecute ESLint o un comprobador de tipos sobre JavaScript puede declararlo en su propio `quality-profile.md`, que es aditivo.

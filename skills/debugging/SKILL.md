@@ -1,33 +1,33 @@
 ---
 name: debugging
-description: Root-cause-first debugging for failing tests, bugs and behavior that does not match the spec.
+description: Depuración buscando primero la causa raíz, para tests que fallan, bugs y comportamiento que no cumple la spec.
 mode: manual
 ---
 
-# Debug
+# Depuración
 
-Use when a test fails unexpectedly, a bug is reported, or behavior does not match an acceptance criterion.
+Úsala cuando un test falle de forma inesperada, se informe de un bug o el comportamiento no cumpla un criterio de aceptación.
 
-## Flow
+## Flujo
 
-1. **Reproduce** the problem reliably and isolate the smallest case. If you cannot reproduce it, say what you tried and stop: do not fix blind.
-2. **Write a failing test** that captures it (regression test), when the behavior is testable.
-3. **Trace** backwards from the failure point: inputs, state and the decision point where the wrong path was taken.
-4. **Find the root cause** by asking "why" until the answer is a defect, not a symptom. Name the file and function.
-5. **Fix the root cause** with the minimal change. Consider side effects.
-6. **Verify**: the regression test passes and the whole suite is green.
+1. **Reproduce** el problema de forma fiable y aísla el caso más pequeño. Si no lo puedes reproducir, di qué probaste y para: no corrijas a ciegas.
+2. **Escribe un test que falle** y lo capture (test de regresión), cuando el comportamiento se pueda probar.
+3. **Rastrea** hacia atrás desde el punto del fallo: entradas, estado y el punto de decisión donde se tomó el camino equivocado.
+4. **Encuentra la causa raíz** preguntando "por qué" hasta que la respuesta sea un defecto y no un síntoma. Nombra el fichero y la función.
+5. **Corrige la causa raíz** con el cambio mínimo. Ten en cuenta los efectos secundarios.
+6. **Verifica**: el test de regresión pasa y toda la suite está en verde.
 
-## Do Not
+## No hagas
 
-- Suppress errors (empty catch blocks, broad try/except) to make a symptom disappear.
-- Hardcode values to make a test pass.
-- Fix more than the root cause in the same change; propose the rest as new tasks.
+- Silenciar errores (bloques catch vacíos, try/except amplios) para que desaparezca un síntoma.
+- Meter valores a fuego para que pase un test.
+- Corregir en el mismo cambio más que la causa raíz; propón el resto como tareas nuevas.
 
-## Output
+## Salida
 
-A short report: symptom, reproduction, root cause (file/function), fix applied, verification result.
+Un informe corto: síntoma, reproducción, causa raíz (fichero/función), corrección aplicada, resultado de la verificación.
 
-## Modes
+## Modos
 
-- `auto`: use it whenever a test fails for a reason you do not immediately understand.
-- `manual`: on `/sdd-debug`.
+- `auto`: úsala siempre que un test falle por un motivo que no entiendas de inmediato.
+- `manual`: con `/sdd-debug`.

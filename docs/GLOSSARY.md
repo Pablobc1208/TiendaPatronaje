@@ -1,20 +1,22 @@
-# Glossary
+# Glosario
 
-Short terms used in this project.
+Términos breves usados en este proyecto.
 
-- `PM`: Product Manager, the person who defines and confirms scope. The human you communicate with.
-- `Epic`: a larger unit of work that groups related user stories. One epic per sprint.
-- `US`: User Story, a user-facing slice of value written as `As a X, I want Y, so I can Z`.
-- `AC`: Acceptance Criterion of a US, written as Given/When/Then and identified as `ACn.m` (US n, criterion m).
-- `DoR` / `DoD`: Definition of Ready / Definition of Done, both in `AGENTS.md`.
-- `Spec`: the phase where the epic, its user stories and their acceptance criteria are defined.
-- `Plan`: the phase where the order of the user stories is set.
-- `Tasks`: the phase where each user story is split into small actions traced to its AC.
-- `Implement`: the phase where the work is built and verified.
-- `Verification`: the checks performed inside `Implement` (tests, DoD) before review.
-- `Review`: the phase where each US is checked against its acceptance criteria and approved by the PM.
-- `Close`: the end of `Review`, where docs are reconciled and the retro is written.
-- `Reviewer`: an independent, read-only agent (`sdd-reviewer`) that judges a US with a fresh context.
-- `Scope fence`: reviews are strict on new or modified code and only observe pre-existing code.
-- `Capability`: something the system does today, described in `specs/CAPABILITIES.md`.
-- `Backlog`: ideas and deferred items in `docs/ROADMAP.md` that are not epics yet.
+- `PM`: Product Manager, la persona que define y confirma el alcance. El humano con quien hablas (Pablo).
+- `Épica`: unidad de trabajo grande que agrupa historias de usuario relacionadas. Una épica por sprint.
+- `US`: historia de usuario, una porción de valor para el usuario escrita como `Como X, quiero Y, para Z`.
+- `AC`: criterio de aceptación de una US, escrito como Dado/Cuando/Entonces e identificado como `ACn.m` (US n, criterio m).
+- `DoR` / `DoD`: Definition of Ready / Definition of Done, ambas en `AGENTS.md`.
+- `Spec`: fase en la que se definen la épica, sus historias de usuario y sus criterios de aceptación.
+- `Plan`: fase en la que se fija el orden de las historias de usuario.
+- `Tasks`: fase en la que cada historia se divide en acciones pequeñas trazadas a sus AC.
+- `Implement`: fase en la que se construye y verifica el trabajo.
+- `Verificación`: las comprobaciones dentro de `Implement` (tests, DoD) antes de la revisión.
+- `Review`: fase en la que cada US se comprueba contra sus criterios de aceptación y la aprueba el PM.
+- `Close`: el final de `Review`, donde se reconcilia la documentación y se escribe la retro.
+- `Revisor`: agente independiente y de solo lectura (`sdd-reviewer`) que juzga una US con contexto limpio.
+- `Límite de alcance`: las revisiones son estrictas con el código nuevo o modificado y solo observan el código previo.
+- `Capacidad`: algo que el sistema hace hoy, descrito en `specs/CAPABILITIES.md`.
+- `Backlog`: ideas y puntos aplazados en `docs/ROADMAP.md` que aún no son épicas.
+- `Patrón`: producto que vende la tienda; un patrón de costura en PDF con varias tallas.
+- `Variante`: una talla concreta de un patrón, con su precio y su PDF.

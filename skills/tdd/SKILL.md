@@ -1,34 +1,34 @@
 ---
 name: tdd
-description: Build or change code with a red-green-refactor loop, one vertical slice at a time.
+description: Construye o cambia código con un ciclo rojo-verde-refactor, una porción vertical cada vez.
 mode: manual
 ---
 
 # TDD
 
-Use when implementing a feature or a fix whose behavior tests can express.
+Úsala al implementar una funcionalidad o una corrección cuyo comportamiento se pueda expresar con tests.
 
-## Flow
+## Flujo
 
-1. Pick one acceptance criterion or one behavior of the task.
-2. Write the smallest failing test against the public interface. **Run it and see it fail** for the expected reason; a test that never failed proves nothing.
-3. Make it pass with the least code. No extra functionality beyond what the test demands.
-4. Refactor while keeping the suite green.
-5. Repeat for the next behavior: happy path first, then edge cases and errors.
+1. Elige un criterio de aceptación o un comportamiento de la tarea.
+2. Escribe el test más pequeño que falle contra la interfaz pública. **Ejecútalo y míralo fallar** por el motivo esperado; un test que nunca falló no demuestra nada.
+3. Hazlo pasar con el mínimo código. Nada de funcionalidad extra más allá de lo que pide el test.
+4. Refactoriza manteniendo la suite en verde.
+5. Repite con el siguiente comportamiento: primero el camino feliz, después los casos límite y los errores.
 
-## Scope
+## Alcance
 
-- New or changed behavior: always test first.
-- Bug fixes: start with a regression test that reproduces the bug, then fix.
-- Pre-existing code you are not changing: do not add tests or refactor it "to make it testable". You may note the gap as an observation.
+- Comportamiento nuevo o cambiado: siempre test primero.
+- Corrección de bugs: empieza con un test de regresión que reproduzca el bug y después corrige.
+- Código previo que no estás cambiando: no le añadas tests ni lo refactorices "para hacerlo testeable". Puedes anotar la carencia como observación.
 
-## Keep It Lean
+## Mantenla ligera
 
-- Test behavior, not internals. Prefer integration-style tests over mocks of your own code.
-- Never mark a task `[<]` with failing or skipped tests, or with tests without real assertions.
-- Report what was tested: tests written, edge cases covered, suite result.
+- Prueba el comportamiento, no las tripas. Prefiere tests de integración a mocks de tu propio código.
+- Nunca marques una tarea `[<]` con tests que fallan o se saltan, ni con tests sin aserciones reales.
+- Informa de lo probado: tests escritos, casos límite cubiertos, resultado de la suite.
 
-## Modes
+## Modos
 
-- `auto`: apply it to every task that adds or changes behavior.
-- `manual`: start a TDD pass on `/tdd`.
+- `auto`: aplícala a toda tarea que añada o cambie comportamiento.
+- `manual`: empieza una pasada TDD con `/tdd`.

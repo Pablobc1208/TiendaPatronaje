@@ -1,27 +1,27 @@
 # EPIC0 - Plan
 
-This file is both the plan of EPIC0 and the canonical plan template for future `specs/EPICX/` folders.
+Este fichero es el plan de EPIC0 y también la plantilla de plan para las futuras carpetas `specs/EPICX/`.
 
-## Status
+## Estado
 
 `closed`
 
-## User Story Order
+## Orden de las historias de usuario
 
 1. US0
 
-## Dependencies / Priority
+## Dependencias / prioridad
 
-- `US0` is the first and only US because it establishes the foundation the rest of the project depends on.
+- `US0` es la primera y única US porque establece la base de la que depende el resto del proyecto.
 
-## Delivery Decisions
+## Decisiones de entrega
 
-- None. EPIC0 only produces documentation.
+- Ninguna. EPIC0 solo produce documentación.
 
-## Open Questions
+## Preguntas abiertas
 
-- None.
+- Ninguna.
 
-## Approval
+## Aprobación
 
-- Approved by the PM: shipped with the scaffold.
+- Aprobado por el PM: viene con el scaffold.
