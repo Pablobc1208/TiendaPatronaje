@@ -51,7 +51,7 @@ productos
   tela_recomendada  text
   metraje       text
   nivel         text          CHECK (nivel IN ('Fácil','Intermedio','Avanzado') OR nivel IS NULL)
-  margen_costura text         CHECK (margen_costura IN ('Sí','No') OR margen_costura IS NULL)
+  margen_costura boolean      -- true, false o null (sin indicar)
   activo        boolean       NOT NULL default true
   creado_en     timestamptz   NOT NULL default now()
 
@@ -62,6 +62,7 @@ variantes_producto
   precio_centimos  integer    NOT NULL CHECK (precio_centimos >= 0)
   hojas_a4      integer
   medidas       jsonb                             -- {pecho: 92, cintura: 76, ...} — null si sin indicar
+  CONSTRAINT uq_variantes_producto_talla UNIQUE (producto_id, talla)
 
 archivos_variante
   id            uuid          PK  default gen_random_uuid()
