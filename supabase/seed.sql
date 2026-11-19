@@ -1,0 +1,2 @@
+-- Datos de prueba para desarrollo local (`supabase db reset`).
+-- Se rellenará en EPIC2 con productos y tallas de ejemplo.

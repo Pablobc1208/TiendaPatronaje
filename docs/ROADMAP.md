@@ -5,7 +5,7 @@ Leyenda de estados: `new` → `spec` → `plan` → `tasks` → `implement` → 
 | ID    | Nombre                   | Objetivo                                                                                                                                    | Estado    | Terminada |
 | ----- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------- |
 | EPIC0 | Fundación                | Constitución, specs, arquitectura y roadmap con las respuestas del PM para empezar los sprints SDD.                                         | implement |          |
-| EPIC1 | Base técnica             | Proyecto React Router + TypeScript, Supabase conectado, guía visual, tests y despliegue automático en Cloudflare con URL de pruebas.        | new       |          |
+| EPIC1 | Base técnica             | Proyecto React Router + TypeScript, Supabase conectado, guía visual, tests y despliegue automático en Cloudflare con URL de pruebas.        | implement |          |
 | EPIC2 | Catálogo                 | Inicio, categorías, listado con filtros (categoría, talla, precio), búsqueda y ficha de producto con selector de talla.                     | new       |          |
 | EPIC3 | Carrito y pago           | Carrito, checkout con email de entrega, pago con Stripe Checkout y pedido guardado.                                                        | new       |          |
 | EPIC4 | Entrega y factura        | Correo al email indicado con el PDF comprado y su factura; los PDF nunca son públicos.                                                     | new       |          |
