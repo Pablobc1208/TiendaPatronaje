@@ -19,15 +19,16 @@ export default function Inicio() {
           Clemen Corbacho Patronaje
         </h1>
         <p className="text-base text-texto-suave sm:text-lg">
-          Estamos preparando la nueva tienda de patrones de costura en PDF. Descargas directas, explicaciones paso a
-          paso y atención al detalle.
+          Estamos preparando la nueva tienda de patrones de costura en PDF. Descargas directas, explicaciones
+          paso a paso y atención al detalle.
         </p>
       </header>
 
       <section className="mt-8 rounded-2xl border border-borde bg-superficie p-6 shadow-xs">
         <h2 className="font-serif text-lg font-semibold text-texto">Artesanía y precisión en cada patrón</h2>
         <p className="mt-2 text-sm text-texto-suave">
-          Muy pronto podrás explorar nuestro catálogo de prendas con selector de talla e instrucciones detalladas.
+          Muy pronto podrás explorar nuestro catálogo de prendas con selector de talla e instrucciones
+          detalladas.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <button

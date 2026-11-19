@@ -2,22 +2,39 @@
 
 /*
  * Guía visual de la tienda.
- * Tokens de diseño aprobados para Clemen Corbacho Patronaje.
+ * Ahora conviven dos paletas: la de la portada (primario/acento, Playfair + Inter)
+ * y la de /guia-visual (crema/terracota, Fraunces + DM Sans). El PM elegirá una
+ * y en EPIC1 T12 se unificará en un solo juego de tokens.
  */
 @theme {
+  /* Paleta de la portada */
   --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primario: #8b6f5c;
+  --color-primario-oscuro: #6b5344;
+  --color-secundario: #d4a88c;
+  --color-acento: #c2797a;
+  --color-acento-oscuro: #a85e5f;
+  --color-fondo: #fdfaf7;
+  --color-superficie: #ffffff;
+  --color-texto: #2d2420;
+  --color-texto-suave: #6b5f58;
+  --color-borde: #e8ddd4;
 
-  --color-primario: #8B6F5C;
-  --color-primario-oscuro: #6B5344;
-  --color-secundario: #D4A88C;
-  --color-acento: #C2797A;
-  --color-acento-oscuro: #A85E5F;
-  --color-fondo: #FDFAF7;
-  --color-superficie: #FFFFFF;
-  --color-texto: #2D2420;
-  --color-texto-suave: #6B5F58;
-  --color-borde: #E8DDD4;
+  /* Paleta de /guia-visual (contraste WCAG AA comprobado) */
+  --color-crema: #fbf7f2;
+  --color-lino: #f2eadf;
+  --color-hilo: #d9cdbe;
+  --color-tinta: #2a2420;
+  --color-tinta-suave: #5e544c;
+  --color-terracota: #a3492a;
+  --color-terracota-oscuro: #843a21;
+  --color-salvia: #56705e;
+  --color-salvia-claro: #e3eae2;
+  --font-titulos: "Fraunces", ui-serif, Georgia, serif;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-boton: 0.75rem;
+  --radius-tarjeta: 1rem;
 }
 
 html,
