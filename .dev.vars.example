@@ -1,0 +1,5 @@
+# Copia este fichero como .dev.vars y rellénalo (no se sube al repo).
+# Lo leen `npm run dev` y `wrangler dev` como variables del Worker en local.
+# Valores: Supabase > Project Settings > API (URL y "Publishable key").
+SUPABASE_URL=https://TU-PROYECTO.supabase.co
+SUPABASE_CLAVE_PUBLICA=sb_publishable_xxx

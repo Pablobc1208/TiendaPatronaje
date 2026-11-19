@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tienda-patronaje",
+  "main": "./workers/app.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+  },
+  // Variables públicas (no secretas). La URL y la clave publicable de Supabase
+  // se pueden ver desde el navegador, así que no son secretos.
+  // Los secretos (service role, Stripe, correo) se guardan con `wrangler secret put`
+  // o en el panel de Cloudflare, nunca aquí.
+  "vars": {
+    "SUPABASE_URL": "",
+    "SUPABASE_CLAVE_PUBLICA": "",
+  },
+}
