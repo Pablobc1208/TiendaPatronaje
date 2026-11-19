@@ -16,11 +16,12 @@ Nueva tienda online de patrones de costura en PDF. Sustituye a https://clemencor
 
 ```bash
 npm install
-cp .dev.vars.example .dev.vars   # rellena la URL y la clave pública de Supabase
 npm run dev                      # http://localhost:5173
 ```
 
-`npm run dev` ejecuta la tienda dentro del runtime de Cloudflare (workerd), igual que en producción. Para comprobar que Supabase está bien conectado, abre http://localhost:5173/api/estado: debe responder `"supabase": { "estado": "ok" }`.
+La URL y la clave pública de Supabase ya están en `wrangler.jsonc`. Si quieres apuntar a otro proyecto en local, crea `.dev.vars` a partir de `.dev.vars.example`: sus valores tienen prioridad.
+
+`npm run dev` ejecuta la tienda dentro del runtime de Cloudflare (workerd), igual que en producción. La propuesta de guía visual se ve en http://localhost:5173/guia-visual. Para comprobar que Supabase está bien conectado, abre http://localhost:5173/api/estado: debe responder `"supabase": { "estado": "ok" }`.
 
 ## Comandos
 

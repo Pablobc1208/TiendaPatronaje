@@ -1,14 +1,37 @@
 @import "tailwindcss";
 
 /*
- * Guía visual: provisional hasta que el PM apruebe la propuesta de EPIC1 (US2).
- * Los colores y tipografías se definen aquí como variables de Tailwind.
+ * Guía visual de la tienda (propuesta de EPIC1 US4, pendiente de aprobación del PM).
+ * Paleta cálida de taller de costura: papel crema, lino, tinta y un acento terracota.
+ * Contrastes comprobados (WCAG AA, texto normal ≥ 4.5:1):
+ *   tinta / crema 14.4 · tinta-suave / crema 6.9 · terracota / crema 5.6
+ *   blanco / terracota 5.9 · blanco / terracota-oscuro 8.0 · salvia / crema 5.1
  */
 @theme {
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --color-crema: #fbf7f2; /* fondo general */
+  --color-lino: #f2eadf; /* superficies: tarjetas, cabecera, pie */
+  --color-hilo: #d9cdbe; /* bordes y separadores */
+  --color-tinta: #2a2420; /* texto principal */
+  --color-tinta-suave: #5e544c; /* texto secundario */
+  --color-terracota: #a3492a; /* acento: botón principal, enlaces, precio */
+  --color-terracota-oscuro: #843a21; /* hover y estado activo del acento */
+  --color-salvia: #56705e; /* secundario: confirmaciones, etiquetas */
+  --color-salvia-claro: #e3eae2; /* fondo de etiquetas y avisos de éxito */
+
+  --font-titulos: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-boton: 0.75rem;
+  --radius-tarjeta: 1rem;
 }
 
 html,
 body {
-  @apply bg-white text-neutral-900;
+  @apply bg-crema font-sans text-tinta antialiased;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-titulos;
 }

@@ -12,7 +12,7 @@
   // Los secretos (service role, Stripe, correo) se guardan con `wrangler secret put`
   // o en el panel de Cloudflare, nunca aquí.
   "vars": {
-    "SUPABASE_URL": "",
-    "SUPABASE_CLAVE_PUBLICA": "",
+    "SUPABASE_URL": "https://jqasywiudiwiilognbde.supabase.co",
+    "SUPABASE_CLAVE_PUBLICA": "sb_publishable_qZhS8HBE4imNlUZTWYpHlg_WIZAGvwA",
   },
 }
