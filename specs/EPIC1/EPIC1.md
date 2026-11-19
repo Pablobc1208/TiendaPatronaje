@@ -84,8 +84,6 @@ Resultado de la aclaración (`grill-me`). Los revisores comprueban el trabajo co
 
 ## Retro
 
-Se rellena al cerrar la épica.
-
-- Mantener:
-- Cambiar:
-- Acción:
+- Mantener: revisiones independientes deterministas con `sdd-reviewer` y trazabilidad exhaustiva de criterios de aceptación; comprobaciones automáticas continuas en CI.
+- Cambiar: acordar y validar la guía visual antes de maquetar pantallas intermedias para evitar refactorizaciones de componentes; desacoplar dependencias de infraestructura externa manual para no frenar el cierre de historias de producto.
+- Acción: registrar dependencias que requieran configuración externa manual en el backlog cuando no bloqueen el desarrollo ni las pruebas locales del sistema.

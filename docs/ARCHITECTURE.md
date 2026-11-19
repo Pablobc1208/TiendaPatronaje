@@ -62,7 +62,7 @@ Las carpetas que imponen las herramientas (`app/routes`, `supabase/migrations`, 
 
 ## Prácticas de desarrollo
 
-- Ramas: `feature/EPICX-<nombre>` desde `main`, integradas por PR en `main`.
+- Ramas: `main` es producción y no se trabaja en ella. `dev` es integración. Cada parte se desarrolla en una rama `feat/<parte>` que se crea desde `dev` al empezarla (`feat/inicio`, `feat/catalogo`, `feat/carrito`…) y vuelve a `dev` por PR. `dev` pasa a `main` solo cuando el PM lo decide.
 - Mensajes de commit: `[EPICX][Tn] <resumen>`, en español.
 - Idioma del código: todo en español (identificadores, comentarios, textos de la interfaz, tablas y columnas de la base de datos). Se mantienen en inglés solo las palabras reservadas, las APIs de librerías y las convenciones de los frameworks (`loader`, `action`, `useState`…). Ejemplos: `calcularTotalCarrito()`, `productos`, `variantesProducto`.
 
@@ -77,3 +77,4 @@ Entradas cortas y con fecha. Añade una cada vez que una épica introduzca una d
 - 2026-10-28: React Router v7 con SSR en Cloudflare Workers en lugar de una SPA, por SEO.
 - 2026-11-19: se arranca con React Router v8 (la estable actual) en vez de v7; mismo modo framework. TypeScript 6 porque typescript-eslint aún no admite TypeScript 7.
 - 2026-11-19: despliegue con Cloudflare Workers Builds (conectado al repo) en lugar de desplegar desde GitHub Actions, para no guardar tokens de Cloudflare en GitHub. Actions solo hace las comprobaciones.
+- 2026-11-19: flujo de ramas: `main` es producción y no se trabaja en ella; `dev` es integración; cada parte se desarrolla en una rama `feat/<parte>` creada desde `dev` al empezarla (`feat/inicio`, `feat/catalogo`, `feat/carrito`…) que vuelve a `dev` por PR; `dev` pasa a `main` solo cuando el PM lo decide.
