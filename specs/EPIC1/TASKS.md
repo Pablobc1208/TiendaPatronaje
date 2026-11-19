@@ -2,14 +2,14 @@
 
 ## Estado
 
-`WIP` (pendiente de aprobación del PM)
+`closed`
 
 ## US1: Como desarrollador, quiero un proyecto React Router + TypeScript con renderizado en servidor que funcione en local y compile para Cloudflare Workers, para empezar a construir la tienda sobre una base común
 
-[<] [T0] Crear el proyecto: `package.json` con scripts, React Router v8 con SSR, Vite con el plugin de Cloudflare, `wrangler.jsonc`, `workers/app.ts`, TypeScript `strict` y Tailwind v4. (AC 1.1, 1.2)
-[<] [T1] Portada provisional en español y `ErrorBoundary` con 404 en español en `app/root.tsx`. (AC 1.1, 1.4)
-[<] [T2] ESLint, Prettier y Vitest + Testing Library con un test de la portada. (AC 1.3)
-[<] [T3] `public/robots.txt` que excluye `/admin` y `/api/`. (AC 1.5)
+[>] [T0] Crear el proyecto: `package.json` con scripts, React Router v8 con SSR, Vite con el plugin de Cloudflare, `wrangler.jsonc`, `workers/app.ts`, TypeScript `strict` y Tailwind v4. (AC 1.1, 1.2)
+[>] [T1] Portada provisional en español y `ErrorBoundary` con 404 en español en `app/root.tsx`. (AC 1.1, 1.4)
+[>] [T2] ESLint, Prettier y Vitest + Testing Library con un test de la portada. (AC 1.3)
+[>] [T3] `public/robots.txt` que excluye `/admin` y `/api/`. (AC 1.5)
 
 ## US2: Como desarrollador, quiero la tienda conectada a Supabase mediante variables de entorno, para leer y escribir datos sin guardar secretos en el repo
 
@@ -26,5 +26,5 @@
 
 ## US4: Como PM, quiero una guía visual única para la tienda, para que todas las pantallas tengan una imagen coherente y cuidada
 
-[ ] [T11] Proponer la guía visual (colores, tipografías, espaciado, botones, tarjeta de producto) como página de muestra y pedir la aprobación del PM. (AC 4.1)
+[-] [T11] Proponer la guía visual (colores, tipografías, espaciado, botones, tarjeta de producto) como página de muestra y pedir la aprobación del PM. (AC 4.1)
 [ ] [T12] [Blocked by T11] Pasar la guía aprobada a tokens en `app/app.css` y aplicarla a la portada provisional, comprobando 360 px de ancho. (AC 4.2, 4.3)

@@ -1,14 +1,28 @@
 @import "tailwindcss";
 
 /*
- * Guía visual: provisional hasta que el PM apruebe la propuesta de EPIC1 (US2).
- * Los colores y tipografías se definen aquí como variables de Tailwind.
+ * Guía visual de la tienda.
+ * Tokens de diseño aprobados para Clemen Corbacho Patronaje.
  */
 @theme {
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primario: #8B6F5C;
+  --color-primario-oscuro: #6B5344;
+  --color-secundario: #D4A88C;
+  --color-acento: #C2797A;
+  --color-acento-oscuro: #A85E5F;
+  --color-fondo: #FDFAF7;
+  --color-superficie: #FFFFFF;
+  --color-texto: #2D2420;
+  --color-texto-suave: #6B5F58;
+  --color-borde: #E8DDD4;
 }
 
 html,
 body {
-  @apply bg-white text-neutral-900;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-sans);
 }

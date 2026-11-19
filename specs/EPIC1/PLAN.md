@@ -2,7 +2,7 @@
 
 ## Estado
 
-`WIP` (pendiente de aprobación del PM)
+`closed`
 
 ## Orden de las historias
 
@@ -23,4 +23,4 @@
 
 ## Aprobación
 
-Pendiente.
+Aprobado por el PM (2026-11-19).

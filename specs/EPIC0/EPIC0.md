@@ -63,8 +63,6 @@ Entrevista con el PM (Pablo), 2026-10-28.
 
 ## Retro
 
-Se rellena al cerrar la épica.
-
-- Mantener:
-- Cambiar:
-- Acción:
+- Mantener: la entrevista `grill-me` antes de escribir specs evita inventar alcance y produce documentación que el PM reconoce como suya.
+- Cambiar: las tareas de EPIC0 se redactaron dentro de la plantilla del scaffold y hubo que editarlas varias veces; en épicas futuras conviene redactar las tareas directamente en la fase `tasks` sin partir de texto de plantilla.
+- Acción: ninguna regla nueva necesaria en `AGENTS.md`; el flujo actual ya cubre lo aprendido.
