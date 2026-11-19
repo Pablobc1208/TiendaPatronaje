@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, JSX } from "react";
 
 export type VarianteBoton = "principal" | "secundario" | "fantasma";
 
@@ -21,7 +21,7 @@ export function Boton({
   className = "",
   type = "button",
   ...resto
-}: PropsBoton) {
+}: PropsBoton): JSX.Element {
   return (
     <button
       type={type}
