@@ -68,7 +68,7 @@ function Seccion({ titulo, children }: { titulo: string; children: ReactNode }) 
 export default function GuiaVisual() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-10">
-      <p className="text-sm font-medium tracking-wide text-terracota uppercase">Propuesta</p>
+      <p className="text-sm font-medium tracking-wide text-terracota uppercase">Aprobada</p>
       <h1 className="mt-2 text-4xl font-semibold">Guía visual</h1>
       <p className="mt-4 max-w-2xl text-lg text-tinta-suave">
         Una imagen cálida de taller de costura: papel crema, lino, tinta y un acento terracota. Pensada

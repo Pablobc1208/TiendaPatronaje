@@ -24,7 +24,7 @@
 [<] [T9] Workflow de GitHub Actions con tipos, lint, formato, tests y build en cada PR y en `main`. (AC 3.1)
 [!] [T10] [Blocked by PM] Conectar el repo en Cloudflare Workers Builds (producción `main` y builds de ramas) y comprobar la URL `*.workers.dev`. (AC 3.2, 3.3)
 
-## US4 (guía desde cero, sin logo ni colores previos; decisión del PM 2026-11-19): Como PM, quiero una guía visual única para la tienda, para que todas las pantallas tengan una imagen coherente y cuidada
+## US4 (guía desde cero, sin logo ni colores previos; decisión del PM 2026-11-19; aprobada la paleta terracota y crema el mismo día): Como PM, quiero una guía visual única para la tienda, para que todas las pantallas tengan una imagen coherente y cuidada
 
 [<] [T11] Proponer la guía visual (colores, tipografías, espaciado, botones, tarjeta de producto) como página de muestra y pedir la aprobación del PM. (AC 4.1)
-[-] [T12] [Blocked by T11] Pasar la guía aprobada a tokens en `app/app.css` y aplicarla a la portada provisional, comprobando 360 px de ancho. (AC 4.2, 4.3)
+[<] [T12] Pasar la guía aprobada a tokens en `app/app.css` y aplicarla a la portada provisional, comprobando 360 px de ancho. (AC 4.2, 4.3)
