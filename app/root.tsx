@@ -1,3 +1,4 @@
+import type { JSX, ReactNode } from "react";
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -13,15 +14,21 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+function CabeceraDocumento(): JSX.Element {
+  return (
+    <head>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <Meta />
+      <Links />
+    </head>
+  );
+}
+
+export function Layout({ children }: { children: ReactNode }): JSX.Element {
   return (
     <html lang="es">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
+      <CabeceraDocumento />
       <body>
         {children}
         <ScrollRestoration />
@@ -31,24 +38,38 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function Aplicacion() {
+export default function Aplicacion(): JSX.Element {
   return <Outlet />;
 }
 
-/** Página de error común: 404 para rutas que no existen y mensaje genérico para el resto. */
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let titulo = "Algo ha ido mal";
-  let detalle = "Ha ocurrido un error inesperado. Vuelve a intentarlo en unos minutos.";
-  let traza: string | undefined;
+interface InformacionError {
+  titulo: string;
+  detalle: string;
+  traza?: string;
+}
 
+function obtenerInformacionError(error: unknown): InformacionError {
   if (isRouteErrorResponse(error)) {
-    titulo = error.status === 404 ? "Página no encontrada" : `Error ${error.status}`;
-    detalle =
-      error.status === 404 ? "La página que buscas no existe o se ha movido." : error.statusText || detalle;
-  } else if (import.meta.env.DEV && error instanceof Error) {
-    detalle = error.message;
-    traza = error.stack;
+    const es404 = error.status === 404;
+    return {
+      titulo: es404 ? "Página no encontrada" : `Error ${error.status}`,
+      detalle: es404
+        ? "La página que buscas no existe o se ha movido."
+        : error.statusText || "Ha ocurrido un error inesperado.",
+    };
   }
+  if (import.meta.env.DEV && error instanceof Error) {
+    return { titulo: "Algo ha ido mal", detalle: error.message, traza: error.stack };
+  }
+  return {
+    titulo: "Algo ha ido mal",
+    detalle: "Ha ocurrido un error inesperado. Vuelve a intentarlo en unos minutos.",
+  };
+}
+
+/** Página de error común: 404 para rutas que no existen y mensaje genérico para el resto. */
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps): JSX.Element {
+  const { titulo, detalle, traza } = obtenerInformacionError(error);
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-16">

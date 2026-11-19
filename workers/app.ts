@@ -2,7 +2,7 @@ import { createRequestHandler, RouterContextProvider } from "react-router";
 
 import { contextoCloudflare } from "../app/lib/contexto";
 
-const manejarPeticion = createRequestHandler(
+const despacharPeticion = createRequestHandler(
   () => import("virtual:react-router/server-build"),
   import.meta.env.MODE,
 );
@@ -16,6 +16,6 @@ export default {
   async fetch(peticion, env, ctx) {
     const contexto = new RouterContextProvider();
     contexto.set(contextoCloudflare, { env, ctx });
-    return manejarPeticion(peticion, contexto);
+    return despacharPeticion(peticion, contexto);
   },
 } satisfies ExportedHandler<Env>;
