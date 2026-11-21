@@ -55,7 +55,7 @@ VALUES
     'vestido-camisero',
     'Vestido camisero con cuello Mao o tirilla y tapeta delantera para abotonadura hasta la cintura. Con largo por la rodilla, pinza en el pecho, y en la espalda muceta y encuentro central para darle amplitud. Manga corte francesa con puño y botón.',
     NULL,
-    '1,5 m de tejido en ancho de 1,40 m',
+    'Talla 42: 1,5 m de tejido en ancho de 1,40 m',
     NULL,
     NULL,
     true
@@ -70,7 +70,7 @@ VALUES
     'Tejido con caída y peso (opcional forrar la falda)',
     NULL,
     NULL,
-    false,
+    NULL,
     true
   ),
 
@@ -157,7 +157,7 @@ VALUES
     (SELECT id FROM productos WHERE slug = 'cuerpo-y-manga-de-flamenca'),
     '36',
     1200,
-    26,
+    NULL,
     '{"pecho": 88, "cintura": 68, "cadera": 92, "ancho_espalda": 37}'::jsonb
   ),
   (
@@ -178,21 +178,21 @@ VALUES
     (SELECT id FROM productos WHERE slug = 'cuerpo-y-manga-de-flamenca'),
     '42',
     1200,
-    26,
+    NULL,
     '{"pecho": 100, "cintura": 80, "cadera": 104, "ancho_espalda": 39.5}'::jsonb
   ),
   (
     (SELECT id FROM productos WHERE slug = 'cuerpo-y-manga-de-flamenca'),
     '44',
     1200,
-    26,
+    NULL,
     '{"pecho": 104, "cintura": 82, "cadera": 108, "ancho_espalda": 40}'::jsonb
   ),
   (
     (SELECT id FROM productos WHERE slug = 'cuerpo-y-manga-de-flamenca'),
     '46',
     1200,
-    26,
+    NULL,
     '{"pecho": 108, "cintura": 86, "cadera": 112, "ancho_espalda": 42}'::jsonb
   )
 ON CONFLICT (producto_id, talla) DO NOTHING;
@@ -334,7 +334,7 @@ INSERT INTO variantes_producto (producto_id, talla, precio_centimos, hojas_a4, m
 VALUES
   (
     (SELECT id FROM productos WHERE slug = 'bolso-macu'),
-    'Talla única',
+    'Medida única',
     280,
     NULL,
     NULL
