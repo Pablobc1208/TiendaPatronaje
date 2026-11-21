@@ -16,10 +16,10 @@
 
 ---
 
-## US2: Portada con presentación de Clemen, categorías y novedades
+## US2 (autonomía: sí): Portada con presentación de Clemen, categorías y novedades
 
-- [ ] [T5] Actualizar `app/routes/inicio.tsx` para incluir el hero biográfico real de Clemen (diseño puramente tipográfico sin imágenes de stock) y los accesos directos a las 5 categorías que enlazan a `/patrones?categoria=<slug>`, con tests en Vitest. (AC 2.1, 2.2)
-- [ ] [T6] Añadir loader en `app/routes/inicio.tsx` para cargar los últimos 4 patrones activos y renderizar la sección de Novedades usando `TarjetaProducto` ("desde X €" e imagen o "Foto pendiente"), con tests unitarios del loader y de renderizado en Vitest. (AC 2.3)
+- [<] [T5] Actualizar `app/routes/inicio.tsx` para incluir el hero biográfico real de Clemen (diseño puramente tipográfico sin imágenes de stock) y los accesos directos a las 5 categorías que enlazan a `/patrones?categoria=<slug>`, con tests en Vitest. (AC 2.1, 2.2)
+- [<] [T6] Añadir loader en `app/routes/inicio.tsx` para cargar los últimos 4 patrones activos y renderizar la sección de Novedades usando `TarjetaProducto` ("desde X €" e imagen o "Foto pendiente"), con tests unitarios del loader y de renderizado en Vitest. (AC 2.3)
 - [ ] [T7] Comprobación manual en el navegador: modo responsive de las DevTools a 360 px de ancho en la portada `/`, verificando que se lee bien y no hay scroll horizontal, anotando el resultado en la tarea. (AC 2.4)
 
 ---
