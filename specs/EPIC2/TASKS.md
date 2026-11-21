@@ -9,8 +9,8 @@
 ## US1 (autonomía: sí): Esquema de base de datos, búsqueda con unaccent y datos de prueba
 
 - [<] [T0] Escribir la migración `supabase/migrations/20261119000001_catalogo.sql` con extensión `unaccent`, tablas `categorias`, `productos`, `variantes_producto`, `archivos_variante`, restricciones (`CHECK (precio_centimos >= 0)`, niveles, margen de costura), índices por slug y categoría, RLS habilitada con políticas públicas de solo lectura y función `buscar_patrones` con `SECURITY INVOKER`. (AC 1.1, 1.2, 1.4)
-- [ ] [T1] [PM] Aplicar la migración `supabase/migrations/20261119000001_catalogo.sql` en el Editor SQL de Supabase Studio del proyecto remoto. (AC 1.1, 1.2)
-- [ ] [T2] Escribir el script de datos iniciales `supabase/seed.sql` con inserción idempotente (`ON CONFLICT DO NOTHING`) de las 5 categorías oficiales y 8 patrones reales con sus variantes de talla, precios en céntimos y corrección de erratas conocidas extraídos de la API de la tienda. (AC 1.3)
+- [x] [T1] [PM] Aplicar la migración `supabase/migrations/20261119000001_catalogo.sql` en el Editor SQL de Supabase Studio del proyecto remoto. (AC 1.1, 1.2)
+- [<] [T2] Escribir el script de datos iniciales `supabase/seed.sql` con inserción idempotente (`ON CONFLICT DO NOTHING`) de las 5 categorías oficiales y 8 patrones reales con sus variantes de talla, precios en céntimos y corrección de erratas conocidas extraídos de la API de la tienda. (AC 1.3)
 - [ ] [T3] [PM] Ejecutar el seed `supabase/seed.sql` en el Editor SQL de Supabase Studio del proyecto remoto. (AC 1.3)
 - [ ] [T4] Crear el módulo de acceso a datos `app/lib/catalogo.servidor.ts` con funciones tipadas para consultar productos activos, categorías y variantes desde Supabase, con tests unitarios en Vitest comprobando exclusión de productos inactivos. (AC 1.4)
 
