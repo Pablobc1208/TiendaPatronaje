@@ -60,16 +60,14 @@ export function formatearResumenTallas(variantes?: Array<{ talla: string }>): st
 function HeroBiografico(): JSX.Element {
   return (
     <section className="border-b border-hilo pt-4 pb-12 text-center sm:pb-16 sm:text-left">
-      <p className="text-sm font-semibold tracking-wider text-terracota uppercase">
-        Taller de costura artesanal
-      </p>
-      <h1 className="mt-3 font-serif text-4xl font-bold tracking-tight text-tinta sm:text-5xl lg:text-6xl">
+      <h1 className="font-serif text-4xl font-bold tracking-tight text-tinta sm:text-5xl lg:text-6xl">
         Clemen Corbacho Patronaje
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-tinta-suave sm:text-xl">
-        Clemen Corbacho cose de forma profesional desde los 12 años. Toda una vida dedicada a la aguja, el
-        corte y la confección volcada en patrones digitales en PDF diseñados con precisión milimétrica para
-        que cosas tus prendas a medida.
+        Clemen Corbacho cose de forma profesional desde los 12 años. Tras pasar por distintos talleres de
+        confección y aprender cada etapa del oficio, del diseño al acabado, nació este proyecto con una idea
+        sencilla: que cualquier persona, desde quien empieza hasta la modista con experiencia, tenga patrones
+        claros, bien explicados y fáciles de usar.
       </p>
     </section>
   );

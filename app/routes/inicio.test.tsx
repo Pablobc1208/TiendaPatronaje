@@ -148,8 +148,11 @@ describe("Inicio (T5 - AC2.1, AC2.2)", () => {
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Clemen Corbacho Patronaje");
     expect(
-      screen.getByText(/Clemen Corbacho cose de forma profesional desde los 12 años/i),
+      screen.getByText(
+        "Clemen Corbacho cose de forma profesional desde los 12 años. Tras pasar por distintos talleres de confección y aprender cada etapa del oficio, del diseño al acabado, nació este proyecto con una idea sencilla: que cualquier persona, desde quien empieza hasta la modista con experiencia, tenga patrones claros, bien explicados y fáciles de usar.",
+      ),
     ).toBeInTheDocument();
+    expect(screen.queryByText(/taller de costura artesanal/i)).not.toBeInTheDocument();
 
     const imagenes = container.querySelectorAll("img");
     expect(imagenes).toHaveLength(0);
