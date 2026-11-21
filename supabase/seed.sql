@@ -164,14 +164,14 @@ VALUES
     (SELECT id FROM productos WHERE slug = 'cuerpo-y-manga-de-flamenca'),
     '38',
     1200,
-    26,
+    NULL,
     '{"cintura": 72, "cadera": 96, "largo": 92}'::jsonb
   ),
   (
     (SELECT id FROM productos WHERE slug = 'cuerpo-y-manga-de-flamenca'),
     '40',
     1200,
-    26,
+    NULL,
     '{"pecho": 93, "cintura": 76, "cadera": 100}'::jsonb
   ),
   (
