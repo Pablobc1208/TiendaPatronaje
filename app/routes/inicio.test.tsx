@@ -5,7 +5,7 @@ import type { Categoria, PatronConRelaciones } from "~/lib/catalogo.servidor";
 import * as catalogoServidor from "~/lib/catalogo.servidor";
 import * as supabaseServidor from "~/lib/supabase.servidor";
 
-import Inicio, { formatearResumenTallas, loader } from "./inicio";
+import Inicio, { formatearResumenTallas, loader, meta } from "./inicio";
 
 const categoriasMock: Categoria[] = [
   { id: "1", nombre: "Flamenca", slug: "flamenca", creada_en: "2026-11-20" },
@@ -132,6 +132,17 @@ const novedadesMock: PatronConRelaciones[] = [
 ];
 
 describe("Inicio (T5 - AC2.1, AC2.2)", () => {
+  it("exporta metadatos con la descripción requerida", () => {
+    const descriptores = meta({} as Parameters<typeof meta>[0]);
+    expect(descriptores).toEqual([
+      { title: "Clemen Corbacho Patronaje" },
+      {
+        name: "description",
+        content: "Patrones de costura en PDF de Clemen Corbacho, claros, bien explicados y fáciles de usar.",
+      },
+    ]);
+  });
+
   it("muestra el hero con el texto biográfico real de Clemen y sin imágenes de stock (AC 2.1)", () => {
     const { container } = render(<Inicio loaderData={{ categorias: categoriasMock, novedades: [] }} />);
 

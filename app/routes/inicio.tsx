@@ -14,8 +14,7 @@ export function meta(_: Route.MetaArgs): Route.MetaDescriptors {
     { title: "Clemen Corbacho Patronaje" },
     {
       name: "description",
-      content:
-        "Patrones de costura en PDF con la experiencia y precisión del taller artesanal de Clemen Corbacho.",
+      content: "Patrones de costura en PDF de Clemen Corbacho, claros, bien explicados y fáciles de usar.",
     },
   ];
 }
