@@ -198,6 +198,9 @@ describe("Inicio (T6 - AC2.3: Novedades y Loader)", () => {
     render(<Inicio loaderData={{ categorias: categoriasMock, novedades: novedadesMock }} />);
 
     expect(screen.getByRole("heading", { level: 2, name: /novedades/i })).toBeInTheDocument();
+    expect(
+      screen.getByText("Los últimos patrones del taller, listos para descargar y empezar a coser."),
+    ).toBeInTheDocument();
 
     // Comprueba las 4 tarjetas y sus precios desde
     expect(screen.getByText("Vestido flamenca de nejas")).toBeInTheDocument();

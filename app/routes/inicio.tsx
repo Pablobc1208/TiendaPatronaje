@@ -122,7 +122,7 @@ function SeccionNovedades({ novedades }: { novedades: PatronConRelaciones[] }): 
         <div>
           <h2 className="text-2xl font-bold text-tinta sm:text-3xl">Novedades del taller</h2>
           <p className="mt-1 text-sm text-tinta-suave">
-            Los últimos patrones confeccionados, listos para descargar y empezar a coser.
+            Los últimos patrones del taller, listos para descargar y empezar a coser.
           </p>
         </div>
         <a
