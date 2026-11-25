@@ -372,12 +372,16 @@ describe("catalogo.servidor", () => {
   });
 
   describe("obtenerTallasDisponibles (AC 1.4, AC 3.2)", () => {
-    it("obtiene tallas únicas ordenadas asociadas únicamente a productos activos", async () => {
+    it("obtiene tallas únicas ordenadas (numéricas, curvy, letras) y excluye 'Medida única' y 'Talla única'", async () => {
       const filasVariantes = [
         { talla: "42", producto: { activo: true } },
         { talla: "38", producto: { activo: true } },
+        { talla: "Medida única", producto: { activo: true } },
+        { talla: "Talla única", producto: { activo: true } },
         { talla: "48 curvy", producto: { activo: true } },
         { talla: "38", producto: { activo: true } },
+        { talla: "M", producto: { activo: true } },
+        { talla: "XS", producto: { activo: true } },
       ];
 
       const { cliente } = crearClienteSupabaseSimulado({
@@ -389,7 +393,7 @@ describe("catalogo.servidor", () => {
       );
 
       expect(cliente.from).toHaveBeenCalledWith("variantes_producto");
-      expect(tallas).toEqual(["38", "42", "48 curvy"]);
+      expect(tallas).toEqual(["38", "42", "48 curvy", "XS", "M"]);
     });
   });
 });

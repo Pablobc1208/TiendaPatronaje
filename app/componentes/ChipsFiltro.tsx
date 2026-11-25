@@ -2,6 +2,7 @@ import type { JSX } from "react";
 
 import type { ParametrosFiltros } from "~/lib/filtros";
 import { construirUrlFiltros } from "~/lib/filtros";
+import { esTallaValidaParaChip } from "~/lib/formato";
 
 interface PropsChipTalla {
   talla: string;
@@ -34,7 +35,8 @@ export interface PropsChipsFiltro {
 
 /** Chips de tallas para filtrar el catálogo (?talla=<talla>) (AC 3.2). */
 export function ChipsFiltro({ tallas, filtros }: PropsChipsFiltro): JSX.Element | null {
-  if (!tallas || tallas.length === 0) return null;
+  const tallasVisibles = tallas.filter(esTallaValidaParaChip);
+  if (!tallasVisibles || tallasVisibles.length === 0) return null;
 
   return (
     <div className="space-y-2">
@@ -42,7 +44,7 @@ export function ChipsFiltro({ tallas, filtros }: PropsChipsFiltro): JSX.Element 
         Filtrar por talla:
       </span>
       <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por talla">
-        {tallas.map((talla) => {
+        {tallasVisibles.map((talla) => {
           const activa = filtros.talla === talla;
           const href = construirUrlFiltros("/patrones", filtros, {
             talla: activa ? undefined : talla,

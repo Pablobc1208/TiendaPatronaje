@@ -4,13 +4,14 @@ import { describe, expect, it } from "vitest";
 import { ChipsFiltro } from "./ChipsFiltro";
 
 describe("ChipsFiltro (AC 3.2)", () => {
-  it("muestra la lista de tallas disponibles", () => {
-    render(<ChipsFiltro tallas={["38", "40", "42", "Medida única"]} filtros={{}} />);
+  it("muestra la lista de tallas disponibles excluyendo 'Medida única' y 'Talla única'", () => {
+    render(<ChipsFiltro tallas={["38", "40", "42", "Medida única", "Talla única"]} filtros={{}} />);
 
     expect(screen.getByRole("link", { name: "38" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "40" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "42" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Medida única" })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Medida única" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Talla única" })).not.toBeInTheDocument();
   });
 
   it("marca la talla activa y construye la URL para deseleccionarla al pulsarla de nuevo", () => {

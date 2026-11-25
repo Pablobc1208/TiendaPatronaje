@@ -1,3 +1,4 @@
+import { ordenarTallas } from "./formato";
 import type { ClienteSupabaseServidor } from "./supabase.servidor";
 
 // ============================================================================
@@ -266,13 +267,5 @@ export async function obtenerTallasDisponibles(cliente: EntradaClienteSupabase):
   const filas = (data ?? []) as { talla: string; producto?: { activo: boolean } }[];
   const tallasUnicas = Array.from(new Set(filas.map((f) => f.talla)));
 
-  // Ordenar numéricamente si es posible, alfabéticamente en caso contrario
-  return tallasUnicas.sort((a, b) => {
-    const numA = parseFloat(a);
-    const numB = parseFloat(b);
-    if (!isNaN(numA) && !isNaN(numB)) {
-      return numA - numB;
-    }
-    return a.localeCompare(b, "es", { sensitivity: "base" });
-  });
+  return ordenarTallas(tallasUnicas);
 }

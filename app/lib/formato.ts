@@ -17,3 +17,88 @@ export function formatearResumenTallas(variantes?: Array<{ talla: string }>): st
 
   return variantes.map((v) => v.talla).join(", ");
 }
+
+const TALLAS_EXCLUIDAS_CHIPS = new Set(["medida única", "medida unica", "talla única", "talla unica"]);
+
+const ORDEN_LETRAS = [
+  "3xs",
+  "xxxs",
+  "2xs",
+  "xxs",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "2xl",
+  "xxl",
+  "3xl",
+  "xxxl",
+  "4xl",
+  "xxxxl",
+];
+
+/**
+ * Comprueba si una talla es adecuada para mostrarse como chip de filtro.
+ * Excluye "Medida única" y "Talla única" porque no representan un criterio de filtrado útil.
+ */
+export function esTallaValidaParaChip(talla: string): boolean {
+  return !TALLAS_EXCLUIDAS_CHIPS.has(talla.trim().toLowerCase());
+}
+
+interface InformacionClasificacionTalla {
+  grupo: number;
+  valor: number;
+  texto: string;
+}
+
+function clasificarTalla(talla: string): InformacionClasificacionTalla {
+  const t = talla.trim().toLowerCase();
+
+  // 1. Numéricas puras (36, 38, 40...)
+  if (/^\d+$/.test(t)) {
+    return { grupo: 1, valor: parseInt(t, 10), texto: t };
+  }
+
+  // 2. Curvy por número (46 curvy, 48 curvy...)
+  if (t.includes("curvy")) {
+    const matchNum = t.match(/\d+/);
+    const num = matchNum ? parseInt(matchNum[0]!, 10) : 0;
+    return { grupo: 2, valor: num, texto: t };
+  }
+
+  // 3. Letras en orden textil estándar (XS, S, M, L, XL, XXL...)
+  const indexLetra = ORDEN_LETRAS.indexOf(t);
+  if (indexLetra !== -1) {
+    return { grupo: 3, valor: indexLetra, texto: t };
+  }
+
+  // 4. Otras tallas
+  return { grupo: 4, valor: 0, texto: t };
+}
+
+/**
+ * Ordena las tallas para los chips del catálogo según la convención de la tienda:
+ * 1. Numéricas de menor a mayor (36, 38...)
+ * 2. Curvy por número (46 curvy, 48 curvy...)
+ * 3. Letras en orden de confección (XS, S, M, L, XL, XXL)
+ * Excluye "Medida única" y "Talla única".
+ */
+export function ordenarTallas(tallas: string[]): string[] {
+  const tallasValidas = tallas.filter(esTallaValidaParaChip);
+
+  return tallasValidas.sort((a, b) => {
+    const infoA = clasificarTalla(a);
+    const infoB = clasificarTalla(b);
+
+    if (infoA.grupo !== infoB.grupo) {
+      return infoA.grupo - infoB.grupo;
+    }
+
+    if (infoA.valor !== infoB.valor) {
+      return infoA.valor - infoB.valor;
+    }
+
+    return infoA.texto.localeCompare(infoB.texto, "es", { sensitivity: "base" });
+  });
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { formatearResumenTallas } from "./formato";
+import { esTallaValidaParaChip, formatearResumenTallas, ordenarTallas } from "./formato";
 
 describe("formatearResumenTallas", () => {
   it("devuelve 'Consultar' cuando no hay variantes", () => {
@@ -23,5 +23,59 @@ describe("formatearResumenTallas", () => {
 
   it("enumera las tallas separadas por coma cuando hay mezclas no numéricas", () => {
     expect(formatearResumenTallas([{ talla: "42" }, { talla: "48 curvy" }])).toBe("42, 48 curvy");
+  });
+});
+
+describe("esTallaValidaParaChip", () => {
+  it("excluye 'Medida única' y 'Talla única' en cualquier variante de mayúsculas/acentos", () => {
+    expect(esTallaValidaParaChip("Medida única")).toBe(false);
+    expect(esTallaValidaParaChip("medida unica")).toBe(false);
+    expect(esTallaValidaParaChip("Talla única")).toBe(false);
+    expect(esTallaValidaParaChip("TALLA UNICA")).toBe(false);
+  });
+
+  it("admite tallas estándar", () => {
+    expect(esTallaValidaParaChip("38")).toBe(true);
+    expect(esTallaValidaParaChip("48 curvy")).toBe(true);
+    expect(esTallaValidaParaChip("M")).toBe(true);
+  });
+});
+
+describe("ordenarTallas", () => {
+  it("ordena primero numéricas (menor a mayor), luego curvy por número, después letras en orden textil", () => {
+    const desordenadas = [
+      "XL",
+      "48 curvy",
+      "Medida única",
+      "38",
+      "M",
+      "42",
+      "46 curvy",
+      "XS",
+      "Talla única",
+      "S",
+      "L",
+      "XXL",
+      "36",
+    ];
+
+    const resultado = ordenarTallas(desordenadas);
+
+    expect(resultado).toEqual([
+      // 1. Numéricas
+      "36",
+      "38",
+      "42",
+      // 2. Curvy
+      "46 curvy",
+      "48 curvy",
+      // 3. Letras
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+    ]);
   });
 });
