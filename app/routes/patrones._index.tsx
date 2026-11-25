@@ -51,6 +51,15 @@ function parsearFiltrosUrl(url: URL): FiltrosActivos {
   return { categoria, talla, orden, busqueda };
 }
 
+function construirFiltrosConsulta(filtros: FiltrosActivos): FiltrosCatalogo {
+  return {
+    categoriaSlug: filtros.categoria,
+    talla: filtros.talla,
+    orden: filtros.orden,
+    busqueda: filtros.busqueda,
+  };
+}
+
 /**
  * Loader que consulta los patrones aplicando los filtros recibidos por URL.
  */
@@ -64,15 +73,8 @@ export async function loader({
   const { env } = context.get(contextoCloudflare);
   const { supabase, cabeceras } = crearClienteSupabaseServidor(request, env);
 
-  const filtrosConsulta: FiltrosCatalogo = {
-    categoriaSlug: filtros.categoria,
-    talla: filtros.talla,
-    orden: filtros.orden,
-    busqueda: filtros.busqueda,
-  };
-
   const [patrones, categorias, tallasDisponibles] = await Promise.all([
-    obtenerPatrones(supabase, filtrosConsulta),
+    obtenerPatrones(supabase, construirFiltrosConsulta(filtros)),
     obtenerCategorias(supabase),
     obtenerTallasDisponibles(supabase),
   ]);
@@ -83,9 +85,7 @@ export async function loader({
 function EncabezadoCatalogo(): JSX.Element {
   return (
     <div className="border-b border-hilo pb-8 text-center sm:text-left">
-      <h1 className="font-serif text-3xl font-bold tracking-tight text-tinta sm:text-4xl">
-        Catálogo de patrones
-      </h1>
+      <h1 className="text-3xl font-bold tracking-tight text-tinta sm:text-4xl">Catálogo de patrones</h1>
       <p className="mt-2 text-base text-tinta-suave">
         Patrones de costura en PDF, claros, bien explicados y fáciles de usar.
       </p>

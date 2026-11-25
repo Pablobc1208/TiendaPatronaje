@@ -66,6 +66,44 @@
 
 ---
 
+## US3 - Revisión 2 (2026-11-25)
+
+**Veredicto:** APPROVED
+
+### Tests
+- `npm test`: 14 suites pasadas, 67 tests pasados (100%).
+- `npm run typecheck`: PASS (código 0).
+- `npm run lint`: PASS (código 0).
+- `npm run format:check`: PASS (código 0).
+
+### Criterios de aceptación
+
+| AC | Implementación | Test / Verificación | Estado |
+| --- | --- | --- | --- |
+| **AC3.1** | `app/routes.ts`, `app/routes/patrones._index.tsx:loader`, `app/componentes/PestaniasCategorias.tsx`, `app/lib/filtros.ts:construirUrlFiltros`, `app/lib/catalogo.servidor.ts:obtenerPatrones` | `app/routes/patrones._index.test.tsx`, `app/componentes/PestaniasCategorias.test.tsx` (3 tests), `app/lib/catalogo.servidor.test.ts` | PASS |
+| **AC3.2** | `app/lib/catalogo.servidor.ts:obtenerTallasDisponibles`, `app/lib/formato.ts:ordenarTallas`, `app/componentes/ChipsFiltro.tsx`, `app/routes/patrones._index.tsx:loader` | `app/lib/catalogo.servidor.test.ts`, `app/componentes/ChipsFiltro.test.tsx` (3 tests), `app/routes/patrones._index.test.tsx` | PASS |
+| **AC3.3** | `app/componentes/OrdenSelector.tsx` (`DesplegableOrden`, `alCambiarOrden`), `app/routes/patrones._index.tsx:parsearFiltrosUrl`, `app/lib/catalogo.servidor.ts:obtenerPatrones` | `app/componentes/OrdenSelector.test.tsx` (4 tests incluyendo verificación de `requestSubmit()` con `fireEvent.change`), `app/routes/patrones._index.test.tsx`, `app/lib/catalogo.servidor.test.ts` | PASS |
+| **AC3.4** | `app/componentes/EstadoSinResultados.tsx`, `app/componentes/Boton.tsx:EnlaceBoton`, `app/routes/patrones._index.tsx` | `app/componentes/EstadoSinResultados.test.tsx`, `app/routes/patrones._index.test.tsx` | PASS |
+| **AC3.5** | `app/routes/patrones._index.tsx` (`grid-cols-2`, `px-4`), `app/componentes/PestaniasCategorias.tsx` (`overflow-x-auto`), `app/componentes/ChipsFiltro.tsx` | Comprobación manual en navegador a 360 px / 375 px confirmada y registrada en `specs/EPIC2/TASKS.md` | PASS |
+
+### Hallazgos (código nuevo o modificado)
+- Todos los hallazgos de la Ronda 1 han sido subsanados satisfactoriamente:
+  1. `loader` de `patrones._index.tsx` reducido a 15 líneas tras extraer `construirFiltrosConsulta`.
+  2. `OrdenSelector` reducido tras extraer `DesplegableOrden` (14 líneas).
+  3. `construirUrlFiltros` en `app/lib/filtros.ts` simplificado con `asignarSiPresente` (ambas funciones ≤ 15 líneas).
+  4. `clasificarTalla` en `app/lib/formato.ts` simplificado extrayendo `obtenerNumeroCurvy` (14 líneas).
+  5. `Boton.tsx` unificado con la función auxiliar compartida `obtenerClasesBoton`.
+  6. Añadido test interactivo para `alCambiarOrden` con `fireEvent.change` en `OrdenSelector.test.tsx`.
+  7. Variable `query` renombrada a `cadenaConsulta` en `app/lib/filtros.ts`.
+  8. Identificadores en inglés renombrados a `coincidenciaNumero` e `indiceLetra` en `app/lib/formato.ts`.
+  9. Manejador renombrado a `alCambiarOrden` y selector controlado con `value={orden ?? "novedad"}`.
+  10. Retirado `font-serif` redundante en el `<h1>` del catálogo y eliminada la clase `scrollbar-none` en `PestaniasCategorias`.
+  11. Nota de `T11` en `specs/EPIC2/TASKS.md` actualizada con la referencia a 360 px.
+- Ningún hallazgo crítico, mayor ni menor pendiente.
+
+
+---
+
 ## US2 - Revisión 2 (2026-11-25)
 
 **Veredicto:** APPROVED
@@ -93,5 +131,88 @@
   4. `app/routes/inicio.test.tsx` incluye `afterEach(() => { vi.restoreAllMocks(); })`.
   5. `app/routes/inicio.test.tsx` verifica explícitamente el texto `"desde"` en las tarjetas de novedades.
 - Ningún hallazgo crítico, mayor ni menor pendiente.
+
+---
+
+## US3 - Revisión 1 (2026-11-25)
+
+**Veredicto:** NOT_VERIFIED
+
+### Tests
+- Ejecución independiente de `npm test`, `npm run typecheck`, `npm run lint` y `npm run format:check`: `N/A` (el subagente no dispone de terminal para ejecutar comandos).
+- Comprobaciones comunicadas por la sesión principal:
+  - `npm test`: 14 suites pasadas, 66 tests pasados (100%).
+  - `npm run typecheck`: PASS (código 0).
+  - `npm run lint`: PASS (código 0).
+  - `npm run format:check`: PASS (código 0).
+
+### Criterios de aceptación
+
+| AC | Implementación | Test / Verificación | Estado |
+| --- | --- | --- | --- |
+| **AC3.1** | `app/routes.ts`, `app/routes/patrones._index.tsx:loader`, `app/componentes/PestaniasCategorias.tsx`, `app/lib/filtros.ts:construirUrlFiltros`, `app/lib/catalogo.servidor.ts:obtenerPatrones` | `app/routes/patrones._index.test.tsx`, `app/componentes/PestaniasCategorias.test.tsx` (3 tests), `app/lib/catalogo.servidor.test.ts` | PASS |
+| **AC3.2** | `app/lib/catalogo.servidor.ts:obtenerTallasDisponibles`, `app/lib/formato.ts:ordenarTallas`, `app/componentes/ChipsFiltro.tsx`, `app/routes/patrones._index.tsx:loader` | `app/lib/catalogo.servidor.test.ts`, `app/componentes/ChipsFiltro.test.tsx` (3 tests), `app/routes/patrones._index.test.tsx` | PASS |
+| **AC3.3** | `app/componentes/OrdenSelector.tsx`, `app/routes/patrones._index.tsx:parsearFiltrosUrl`, `app/lib/catalogo.servidor.ts:obtenerPatrones` | `app/componentes/OrdenSelector.test.tsx`, `app/routes/patrones._index.test.tsx`, `app/lib/catalogo.servidor.test.ts` | PARCIAL (añadir test de interacción en `OrdenSelector`) |
+| **AC3.4** | `app/componentes/EstadoSinResultados.tsx`, `app/componentes/Boton.tsx:EnlaceBoton`, `app/routes/patrones._index.tsx` | `app/componentes/EstadoSinResultados.test.tsx`, `app/routes/patrones._index.test.tsx` | PASS |
+| **AC3.5** | `app/routes/patrones._index.tsx` (`grid-cols-2`, `px-4`), `app/componentes/PestaniasCategorias.tsx` (`overflow-x-auto`), `app/componentes/ChipsFiltro.tsx` | Comprobación manual en navegador a 360 px / 375 px registrada por el PM en `specs/EPIC2/TASKS.md` | PASS |
+
+### Hallazgos (código nuevo o modificado)
+1. [MAJOR] `app/routes/patrones._index.tsx` - La función `loader` superaba las 20 líneas - Extraer helper `construirFiltrosConsulta`.
+2. [MAJOR] `app/componentes/OrdenSelector.tsx` - `OrdenSelector` superaba las 20 líneas - Extraer subcomponente `DesplegableOrden`.
+3. [MAJOR] `app/lib/filtros.ts` - `construirUrlFiltros` superaba las 20 líneas y repetía código - Extraer función auxiliar `asignarSiPresente`.
+4. [MAJOR] `app/lib/formato.ts` - `clasificarTalla` superaba las 20 líneas - Extraer helper `obtenerNumeroCurvy`.
+5. [MAJOR] `app/componentes/Boton.tsx` - `Boton` y `EnlaceBoton` duplicaban estilos Tailwind - Extraer función compartida `obtenerClasesBoton`.
+6. [MAJOR] `app/componentes/OrdenSelector.test.tsx` - Falta test de evento para `alCambiarOrden` llamando a `requestSubmit()` - Añadir test interactivo con `fireEvent.change`.
+7. [MINOR] `app/lib/filtros.ts` - Identificador `query` en inglés - Renombrar a `cadenaConsulta`.
+8. [MINOR] `app/lib/formato.ts` - Identificadores `matchNum` e `indexLetra` - Renombrar a `coincidenciaNumero` e `indiceLetra`.
+9. [MINOR] `app/componentes/OrdenSelector.tsx` - Nombre `manejarCambio` y uso de `defaultValue` - Renombrar a `alCambiarOrden` y usar `value={filtros.orden ?? "novedad"}`.
+10. [MINOR] `app/routes/patrones._index.tsx` y `app/componentes/PestaniasCategorias.tsx` - Quitar `font-serif` redundante en `<h1>` y retirar clase `scrollbar-none` inoperante; renombrar `cat` a `categoria`.
+11. [MINOR] `specs/EPIC2/TASKS.md` - Reflejar la resolución a 360 px en la anotación de `T11`.
+
+### Observaciones (código no tocado, no bloqueantes)
+- `app/lib/catalogo.servidor.ts`: funciones base creadas en US1.
+- `app/lib/formato.ts`: exclusión deliberada de "Medida única" y "Talla única" para optimizar el filtrado de catálogo.
+
+### N/A
+- Ejecución de `npm test` por el revisor independiente: `N/A` (entorno sin acceso a terminal).
+
+---
+
+## US3 - Revisión 2 (2026-11-25)
+
+**Veredicto:** APPROVED
+
+### Tests
+- `npm test`: 14 suites pasadas, 67 tests pasados (100%).
+- `npm run typecheck`: PASS (código 0).
+- `npm run lint`: PASS (código 0).
+- `npm run format:check`: PASS (código 0).
+
+### Criterios de aceptación
+
+| AC | Implementación | Test / Verificación | Estado |
+| --- | --- | --- | --- |
+| **AC3.1** | `app/routes.ts`, `app/routes/patrones._index.tsx:loader`, `app/componentes/PestaniasCategorias.tsx`, `app/lib/filtros.ts:construirUrlFiltros`, `app/lib/catalogo.servidor.ts:obtenerPatrones` | `app/routes/patrones._index.test.tsx`, `app/componentes/PestaniasCategorias.test.tsx` (3 tests), `app/lib/catalogo.servidor.test.ts` | PASS |
+| **AC3.2** | `app/lib/catalogo.servidor.ts:obtenerTallasDisponibles`, `app/lib/formato.ts:ordenarTallas`, `app/componentes/ChipsFiltro.tsx`, `app/routes/patrones._index.tsx:loader` | `app/lib/catalogo.servidor.test.ts`, `app/componentes/ChipsFiltro.test.tsx` (3 tests), `app/routes/patrones._index.test.tsx` | PASS |
+| **AC3.3** | `app/componentes/OrdenSelector.tsx` (`DesplegableOrden`, `alCambiarOrden`), `app/routes/patrones._index.tsx:parsearFiltrosUrl`, `app/lib/catalogo.servidor.ts:obtenerPatrones` | `app/componentes/OrdenSelector.test.tsx` (4 tests incluyendo verificación de `requestSubmit()` con `fireEvent.change`), `app/routes/patrones._index.test.tsx`, `app/lib/catalogo.servidor.test.ts` | PASS |
+| **AC3.4** | `app/componentes/EstadoSinResultados.tsx`, `app/componentes/Boton.tsx:EnlaceBoton`, `app/routes/patrones._index.tsx` | `app/componentes/EstadoSinResultados.test.tsx`, `app/routes/patrones._index.test.tsx` | PASS |
+| **AC3.5** | `app/routes/patrones._index.tsx` (`grid-cols-2`, `px-4`), `app/componentes/PestaniasCategorias.tsx` (`overflow-x-auto`), `app/componentes/ChipsFiltro.tsx` | Comprobación manual en navegador a 360 px / 375 px confirmada y registrada en `specs/EPIC2/TASKS.md` | PASS |
+
+### Hallazgos (código nuevo o modificado)
+- Todos los hallazgos de la Ronda 1 han sido subsanados satisfactoriamente:
+  1. `loader` de `patrones._index.tsx` reducido a 15 líneas tras extraer `construirFiltrosConsulta`.
+  2. `OrdenSelector` reducido tras extraer `DesplegableOrden` (14 líneas).
+  3. `construirUrlFiltros` en `app/lib/filtros.ts` simplificado con `asignarSiPresente` (ambas funciones ≤ 15 líneas).
+  4. `clasificarTalla` en `app/lib/formato.ts` simplificado extrayendo `obtenerNumeroCurvy` (14 líneas).
+  5. `Boton.tsx` unificado con la función auxiliar compartida `obtenerClasesBoton`.
+  6. Añadido test interactivo para `alCambiarOrden` con `fireEvent.change` en `OrdenSelector.test.tsx`.
+  7. Variable `query` renombrada a `cadenaConsulta` en `app/lib/filtros.ts`.
+  8. Identificadores en inglés renombrados a `coincidenciaNumero` e `indiceLetra` en `app/lib/formato.ts`.
+  9. Manejador renombrado a `alCambiarOrden` y selector controlado con `value={orden ?? "novedad"}`.
+  10. Retirado `font-serif` redundante en el `<h1>` del catálogo y eliminada la clase `scrollbar-none` en `PestaniasCategorias`.
+  11. Nota de `T11` en `specs/EPIC2/TASKS.md` actualizada con la referencia a 360 px.
+- Ningún hallazgo crítico, mayor ni menor pendiente.
+
+
 
 

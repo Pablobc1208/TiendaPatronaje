@@ -39,12 +39,12 @@ export function PestaniasCategorias({ categorias, filtros }: PropsPestaniasCateg
   const todasActiva = !filtros.categoria;
 
   return (
-    <nav aria-label="Categorías de patrones" className="flex scrollbar-none gap-2 overflow-x-auto pb-2">
+    <nav aria-label="Categorías de patrones" className="flex gap-2 overflow-x-auto pb-2">
       <ElementoPestania nombre="Todas" href={urlTodas} activa={todasActiva} />
-      {categorias.map((cat) => {
-        const activa = filtros.categoria === cat.slug;
-        const href = construirUrlFiltros("/patrones", filtros, { categoria: cat.slug });
-        return <ElementoPestania key={cat.id} nombre={cat.nombre} href={href} activa={activa} />;
+      {categorias.map((categoria) => {
+        const activa = filtros.categoria === categoria.slug;
+        const href = construirUrlFiltros("/patrones", filtros, { categoria: categoria.slug });
+        return <ElementoPestania key={categoria.id} nombre={categoria.nombre} href={href} activa={activa} />;
       })}
     </nav>
   );

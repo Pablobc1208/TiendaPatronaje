@@ -52,28 +52,27 @@ interface InformacionClasificacionTalla {
   texto: string;
 }
 
+function obtenerNumeroCurvy(texto: string): number {
+  const coincidenciaNumero = texto.match(/\d+/);
+  return coincidenciaNumero ? parseInt(coincidenciaNumero[0]!, 10) : 0;
+}
+
 function clasificarTalla(talla: string): InformacionClasificacionTalla {
   const t = talla.trim().toLowerCase();
 
-  // 1. Numéricas puras (36, 38, 40...)
   if (/^\d+$/.test(t)) {
     return { grupo: 1, valor: parseInt(t, 10), texto: t };
   }
 
-  // 2. Curvy por número (46 curvy, 48 curvy...)
   if (t.includes("curvy")) {
-    const matchNum = t.match(/\d+/);
-    const num = matchNum ? parseInt(matchNum[0]!, 10) : 0;
-    return { grupo: 2, valor: num, texto: t };
+    return { grupo: 2, valor: obtenerNumeroCurvy(t), texto: t };
   }
 
-  // 3. Letras en orden textil estándar (XS, S, M, L, XL, XXL...)
-  const indexLetra = ORDEN_LETRAS.indexOf(t);
-  if (indexLetra !== -1) {
-    return { grupo: 3, valor: indexLetra, texto: t };
+  const indiceLetra = ORDEN_LETRAS.indexOf(t);
+  if (indiceLetra !== -1) {
+    return { grupo: 3, valor: indiceLetra, texto: t };
   }
 
-  // 4. Otras tallas
   return { grupo: 4, valor: 0, texto: t };
 }
 

@@ -16,6 +16,27 @@ function CamposOcultosFiltros({ filtros }: PropsCamposOcultos): JSX.Element {
   );
 }
 
+interface PropsDesplegableOrden {
+  orden?: string;
+  alCambiar: (evento: ChangeEvent<HTMLSelectElement>) => void;
+}
+
+function DesplegableOrden({ orden, alCambiar }: PropsDesplegableOrden): JSX.Element {
+  return (
+    <select
+      id="selector-orden"
+      name="orden"
+      value={orden ?? "novedad"}
+      onChange={alCambiar}
+      className="min-h-11 rounded-tarjeta border border-hilo bg-white px-3 py-2 text-sm font-medium text-tinta shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota"
+    >
+      <option value="novedad">Novedades</option>
+      <option value="precio-asc">Precio menor a mayor</option>
+      <option value="precio-desc">Precio mayor a menor</option>
+    </select>
+  );
+}
+
 export interface PropsOrdenSelector {
   filtros: ParametrosFiltros;
 }
@@ -25,7 +46,7 @@ export interface PropsOrdenSelector {
  * Funciona con o sin JavaScript preservando el resto de filtros activos.
  */
 export function OrdenSelector({ filtros }: PropsOrdenSelector): JSX.Element {
-  const manejarCambio = (evento: ChangeEvent<HTMLSelectElement>) => {
+  const alCambiarOrden = (evento: ChangeEvent<HTMLSelectElement>) => {
     evento.currentTarget.form?.requestSubmit();
   };
 
@@ -35,17 +56,7 @@ export function OrdenSelector({ filtros }: PropsOrdenSelector): JSX.Element {
       <label htmlFor="selector-orden" className="text-sm font-medium whitespace-nowrap text-tinta-suave">
         Ordenar por:
       </label>
-      <select
-        id="selector-orden"
-        name="orden"
-        defaultValue={filtros.orden ?? "novedad"}
-        onChange={manejarCambio}
-        className="min-h-11 rounded-tarjeta border border-hilo bg-white px-3 py-2 text-sm font-medium text-tinta shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota"
-      >
-        <option value="novedad">Novedades</option>
-        <option value="precio-asc">Precio menor a mayor</option>
-        <option value="precio-desc">Precio mayor a menor</option>
-      </select>
+      <DesplegableOrden orden={filtros.orden} alCambiar={alCambiarOrden} />
       <noscript>
         <button type="submit" className="min-h-11 rounded-boton bg-terracota px-3 py-2 text-sm text-white">
           Aplicar

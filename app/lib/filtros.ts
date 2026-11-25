@@ -5,6 +5,12 @@ export interface ParametrosFiltros {
   busqueda?: string;
 }
 
+function asignarSiPresente(params: URLSearchParams, clave: string, valor?: string): void {
+  if (valor && valor.trim() !== "") {
+    params.set(clave, valor.trim());
+  }
+}
+
 /**
  * Construye una URL con los parámetros de búsqueda normalizados según el estándar de la tienda:
  * ?categoria=<slug>&talla=<talla>&orden=<opcion>&q=<termino>
@@ -17,22 +23,13 @@ export function construirUrlFiltros(
   const params = new URLSearchParams();
   const estadoFinal = { ...filtros, ...cambios };
 
-  if (estadoFinal.categoria && estadoFinal.categoria.trim() !== "") {
-    params.set("categoria", estadoFinal.categoria.trim());
-  }
-
-  if (estadoFinal.talla && estadoFinal.talla.trim() !== "") {
-    params.set("talla", estadoFinal.talla.trim());
-  }
-
+  asignarSiPresente(params, "categoria", estadoFinal.categoria);
+  asignarSiPresente(params, "talla", estadoFinal.talla);
   if (estadoFinal.orden && estadoFinal.orden !== "novedad") {
     params.set("orden", estadoFinal.orden);
   }
+  asignarSiPresente(params, "q", estadoFinal.busqueda);
 
-  if (estadoFinal.busqueda && estadoFinal.busqueda.trim() !== "") {
-    params.set("q", estadoFinal.busqueda.trim());
-  }
-
-  const query = params.toString();
-  return query ? `${pathname}?${query}` : pathname;
+  const cadenaConsulta = params.toString();
+  return cadenaConsulta ? `${pathname}?${cadenaConsulta}` : pathname;
 }

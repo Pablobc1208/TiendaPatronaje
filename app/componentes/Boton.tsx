@@ -18,6 +18,18 @@ interface PropsBoton extends ButtonHTMLAttributes<HTMLButtonElement>, PropsBoton
 
 interface PropsEnlaceBoton extends AnchorHTMLAttributes<HTMLAnchorElement>, PropsBotonBase {}
 
+export function obtenerClasesBoton(
+  variante: VarianteBoton = "principal",
+  anchoCompleto: boolean = false,
+  className: string = "",
+): string {
+  const base =
+    "inline-flex min-h-11 items-center justify-center rounded-boton px-5 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota";
+  const varianteClase = estilosVariante[variante];
+  const anchoClase = anchoCompleto ? "w-full" : "";
+  return `${base} ${varianteClase} ${anchoClase} ${className}`.trim();
+}
+
 /** Botón de la guía visual. Altura mínima de 44 px para pulsarlo bien en el móvil. */
 export function Boton({
   variante = "principal",
@@ -29,7 +41,7 @@ export function Boton({
   return (
     <button
       type={type}
-      className={`inline-flex min-h-11 items-center justify-center rounded-boton px-5 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota disabled:cursor-not-allowed disabled:opacity-50 ${estilosVariante[variante]} ${anchoCompleto ? "w-full" : ""} ${className}`}
+      className={`${obtenerClasesBoton(variante, anchoCompleto, className)} disabled:cursor-not-allowed disabled:opacity-50`}
       {...resto}
     />
   );
@@ -42,10 +54,5 @@ export function EnlaceBoton({
   className = "",
   ...resto
 }: PropsEnlaceBoton): JSX.Element {
-  return (
-    <a
-      className={`inline-flex min-h-11 items-center justify-center rounded-boton px-5 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota ${estilosVariante[variante]} ${anchoCompleto ? "w-full" : ""} ${className}`}
-      {...resto}
-    />
-  );
+  return <a className={obtenerClasesBoton(variante, anchoCompleto, className)} {...resto} />;
 }
