@@ -3,9 +3,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import type { Categoria, PatronConRelaciones } from "~/lib/catalogo.servidor";
 import * as catalogoServidor from "~/lib/catalogo.servidor";
+import { formatearResumenTallas } from "~/lib/formato";
 import * as supabaseServidor from "~/lib/supabase.servidor";
 
-import Inicio, { formatearResumenTallas, loader, meta } from "./inicio";
+import Inicio, { loader, meta } from "./inicio";
 
 const categoriasMock: Categoria[] = [
   { id: "1", nombre: "Flamenca", slug: "flamenca", creada_en: "2026-11-20" },

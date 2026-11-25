@@ -17,11 +17,11 @@ describe("ChipsFiltro (AC 3.2)", () => {
     render(<ChipsFiltro tallas={["38", "40"]} filtros={{ categoria: "flamenca", talla: "38" }} />);
 
     const chip38 = screen.getByRole("link", { name: "38" });
-    expect(chip38).toHaveAttribute("aria-pressed", "true");
+    expect(chip38).toHaveAttribute("aria-current", "true");
     expect(chip38).toHaveAttribute("href", "/patrones?categoria=flamenca");
 
     const chip40 = screen.getByRole("link", { name: "40" });
-    expect(chip40).toHaveAttribute("aria-pressed", "false");
+    expect(chip40).not.toHaveAttribute("aria-current");
     expect(chip40).toHaveAttribute("href", "/patrones?categoria=flamenca&talla=40");
   });
 

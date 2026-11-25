@@ -9,8 +9,8 @@ import { TarjetaProducto } from "~/componentes/TarjetaProducto";
 import type { Categoria, FiltrosCatalogo, PatronConRelaciones } from "~/lib/catalogo.servidor";
 import { obtenerCategorias, obtenerPatrones, obtenerTallasDisponibles } from "~/lib/catalogo.servidor";
 import { contextoCloudflare } from "~/lib/contexto";
+import { formatearResumenTallas } from "~/lib/formato";
 import { crearClienteSupabaseServidor } from "~/lib/supabase.servidor";
-import { formatearResumenTallas } from "~/routes/inicio";
 
 import type { Route } from "./+types/patrones._index";
 
@@ -87,7 +87,7 @@ function EncabezadoCatalogo(): JSX.Element {
         Catálogo de patrones
       </h1>
       <p className="mt-2 text-base text-tinta-suave">
-        Patrones de costura profesionales en formato PDF con explicaciones paso a paso.
+        Patrones de costura en PDF, claros, bien explicados y fáciles de usar.
       </p>
     </div>
   );

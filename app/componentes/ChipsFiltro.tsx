@@ -17,7 +17,11 @@ function ChipTalla({ talla, activa, href }: PropsChipTalla): JSX.Element {
     : "border border-hilo bg-white text-tinta hover:border-terracota hover:bg-lino hover:text-terracota";
 
   return (
-    <a href={href} className={`${estilosBase} ${estilosEstado}`} aria-pressed={activa}>
+    <a
+      href={href}
+      className={`${estilosBase} ${estilosEstado}`}
+      {...(activa ? { "aria-current": "true" } : {})}
+    >
       {talla}
     </a>
   );

@@ -134,6 +134,9 @@ describe("Catálogo (T8 - AC 3.1: Configuración de ruta y loader básico)", () 
     );
 
     expect(screen.getByRole("heading", { level: 1, name: /catálogo de patrones/i })).toBeInTheDocument();
+    expect(
+      screen.getByText("Patrones de costura en PDF, claros, bien explicados y fáciles de usar."),
+    ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Todas" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Flamenca" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "42" })).toBeInTheDocument();
