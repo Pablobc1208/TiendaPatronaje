@@ -24,11 +24,11 @@
 
 ---
 
-## US3: Listado del catálogo con pestañas de categorías, filtros por talla y ordenación
+## US3 (autonomía: sí): Listado del catálogo con pestañas de categorías, filtros por talla y ordenación
 
-- [ ] [T8] Configurar la ruta `/patrones` en `app/routes.ts` y crear `app/routes/patrones._index.tsx` con su loader para consultar patrones activos y gestionar el filtrado por categoría (`?categoria=`), con tests en Vitest. (AC 3.1)
-- [ ] [T9] Crear los componentes `PestaniasCategorias` ("Todas" y las 5 categorías oficiales) y `ChipsFiltro` para filtrar por tallas dinámicas obtenidas de la base de datos (`?talla=`), con tests en Vitest. (AC 3.1, 3.2)
-- [ ] [T10] Implementar el selector de ordenación `OrdenSelector` (`?orden=novedad|precio-asc|precio-desc`) y el estado sin resultados con mensaje claro y botón "Quitar filtros", con tests en Vitest. (AC 3.3, 3.4)
+- [<] [T8] Configurar la ruta `/patrones` en `app/routes.ts` y crear `app/routes/patrones._index.tsx` con su loader para consultar patrones activos y gestionar el filtrado por categoría (`?categoria=`), con tests en Vitest. (AC 3.1)
+- [<] [T9] Crear los componentes `PestaniasCategorias` ("Todas" y las 5 categorías oficiales) y `ChipsFiltro` para filtrar por tallas dinámicas obtenidas de la base de datos (`?talla=`), con tests en Vitest. (AC 3.1, 3.2)
+- [<] [T10] Implementar el selector de ordenación `OrdenSelector` (`?orden=novedad|precio-asc|precio-desc`) y el estado sin resultados con mensaje claro y botón "Quitar filtros", con tests en Vitest. (AC 3.3, 3.4)
 - [ ] [T11] Comprobación manual en el navegador: modo responsive de las DevTools a 360 px de ancho en `/patrones`, verificando que filtros, ordenación y cuadrícula se adaptan sin scroll horizontal, anotando el resultado en la tarea. (AC 3.5)
 
 ---
