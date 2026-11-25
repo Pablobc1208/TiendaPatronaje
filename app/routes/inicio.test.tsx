@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import type { Categoria, PatronConRelaciones } from "~/lib/catalogo.servidor";
 import * as catalogoServidor from "~/lib/catalogo.servidor";
@@ -131,6 +131,10 @@ const novedadesMock: PatronConRelaciones[] = [
   },
 ];
 
+afterEach(() => {
+  vi.restoreAllMocks();
+});
+
 describe("Inicio (T5 - AC2.1, AC2.2)", () => {
   it("exporta metadatos con la descripción requerida", () => {
     const descriptores = meta({} as Parameters<typeof meta>[0]);
@@ -201,6 +205,10 @@ describe("Inicio (T6 - AC2.3: Novedades y Loader)", () => {
     expect(
       screen.getByText("Los últimos patrones del taller, listos para descargar y empezar a coser."),
     ).toBeInTheDocument();
+
+    // Comprueba el texto "desde" en las 4 tarjetas
+    const etiquetasDesde = screen.getAllByText("desde");
+    expect(etiquetasDesde).toHaveLength(4);
 
     // Comprueba las 4 tarjetas y sus precios desde
     expect(screen.getByText("Vestido flamenca de nejas")).toBeInTheDocument();
